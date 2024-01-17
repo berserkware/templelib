@@ -5,6 +5,17 @@
 
 TempleApp* active_app = NULL;
 
+// Updates the window's postion and size.
+static void update_window() {
+  
+}
+
+// Updates the cursor type
+static void update_cursor() {
+  
+}
+
+// draws the window border and decorations
 static void draw_window_decorations(GtkWidget *widget, cairo_t *cr, gpointer user_data) {
   GtkAllocation allocation;
   gtk_widget_get_allocation(active_app->window, &allocation);
@@ -34,14 +45,18 @@ static void draw_window_decorations(GtkWidget *widget, cairo_t *cr, gpointer use
   cairo_stroke(cr);
 }
 
-static void draw_event(GtkWidget *widget, cairo_t *cr, gpointer user_data) {
-  draw_window_decorations(widget, cr, user_data);
 
+// runs 30 times per second
+static void draw_event(GtkWidget *widget, cairo_t *cr, gpointer user_data) {
+  update_cursor();
+  update_window();
+  draw_window_decorations(widget, cr, user_data);
 }
 
+// called by timer.
 static gboolean update_drawing_area(gpointer data) {
-    gtk_widget_queue_draw(active_app->drawing_area);  // Queue a redraw
-    return TRUE;  // Continue the timer
+    gtk_widget_queue_draw(active_app->drawing_area); 
+    return TRUE;
 }
 
 TempleApp* tl_create_app(int argc, char *argv[]) {

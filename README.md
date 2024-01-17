@@ -8,3 +8,8 @@ A C Library that aims provides a graphics interface similar to TempleOS. It is b
  - Implement the input interface.
  - User applications should not have to interact with any GTK/dependancies data structures or functions.
  - Thread Safety (CURRENTLY NOT).
+
+## Future Things
+ - Use a library that is more lightweight than GTK. I feel like GTK is a bit too much bloat for the size
+   of the project. I understand that it can be dynamically linked, but the overhead on the code is a bit
+   annoying.

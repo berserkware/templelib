@@ -1,3 +1,4 @@
+// Defines the CGA color pallete as a comma seporated list of r,g,b.
 #define        BLACK 0, 0, 0
 #define     DARKGRAY 0.33, 0.33, 0.33
 #define         BLUE 0, 0, 0.67
@@ -14,5 +15,3 @@
 #define       YELLOW 1, 1, 0.33
 #define    LIGHTGRAY 0.67, 0.67, 0.67
 #define        WHITE 1, 1, 1
-
-#define dg 0.8, 0.8, 0.8
