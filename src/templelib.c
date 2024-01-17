@@ -11,13 +11,26 @@ static void draw_window_decorations(GtkWidget *widget, cairo_t *cr, gpointer use
 
   int window_width = allocation.width;
   int window_height = allocation.height;
-  
+
+  // Draw background
   cairo_set_source_rgb(cr, WHITE); 
   cairo_paint(cr);
-  cairo_set_source_rgb(cr, LIGHTBLUE); 
-  cairo_rectangle(cr, 10, 10, window_width - 20, window_height - 20);
+
+  int line_width = 3;
+  
+  cairo_set_source_rgb(cr, BLUE);
+  cairo_set_line_width(cr, line_width);
+  
+  // Draw outer ring
+  cairo_rectangle(cr, 8, 11, window_width - 16, window_height - 22);
   cairo_stroke(cr);
-  cairo_rectangle(cr, 5, 5, window_width - 10, window_height - 10);
+  cairo_rectangle(cr, 11, 11, window_width - 22, window_height - 22);
+  cairo_stroke(cr);
+
+  // Draw inner ring
+  cairo_rectangle(cr, 17, 17, window_width - 34, window_height - 34);
+  cairo_stroke(cr);
+  cairo_rectangle(cr, 20, 17, window_width - 40, window_height - 34);
   cairo_stroke(cr);
 }
 

@@ -6,6 +6,8 @@ typedef struct {
   GtkWidget *drawing_area;
   char* title;
   void (*draw_it);
+  int border_scale;
+  int text_scale;
 } TempleApp;
 
 extern TempleApp* active_app;
