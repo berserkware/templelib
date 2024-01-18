@@ -8,6 +8,7 @@ typedef struct {
   char* title;
   void (*draw_it)();
   int scale;
+  int real_glyph_size;
 } TempleApp;
 
 // Creates an App.

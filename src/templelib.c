@@ -3,46 +3,92 @@
 #include <unistd.h>
 #include "colors.h"
 #include "templelib.h"
+#include "gr.h"
 #include "glyphs.h"
 
+// Gets the window grid size by dividing the window width by the
+// scaled glyph size
+void get_window_grid_size(TempleApp* app, int* gw, int* gh) {
+  int w, h;
+  SDL_GetWindowSize(app->window, &w, &h);
+
+  *gw = w / app->real_glyph_size;
+  *gh = h / app->real_glyph_size;
+}
+
 // Updates the window's postion and size.
-static void update_window() {
+void update_window(TempleApp* app) {
+
+  int w, h;
+  SDL_GetWindowSize(app->window, &w, &h);
   
+  // Makes sure window width and height is alligned with spritet size
+  if (w % app->real_glyph_size != 0) {
+    SDL_SetWindowSize(app->window, w-(w % app->real_glyph_size), h);
+  }
+  if (h % app->real_glyph_size != 0) {
+    SDL_SetWindowSize(app->window, w, h-(h % app->real_glyph_size));
+  }
 }
 
 // Updates the cursor type
-static void update_cursor() {
+void update_cursor(TempleApp* app) {
   
 }
 
 // draws the window border and decorations
-static void draw_window_decorations() {
-}
+void draw_window_decorations(TempleApp* app) {
+  int gw, gh;
+  get_window_grid_size(app, &gw, &gh);
 
+  SDL_SetTextureColorMod(glyphs_texture, BLUE);
+
+  // draws the corners
+  draw_glyph_on_grid(app, BORDER_TOP_LEFT_CORNER, 0, 0);
+  draw_glyph_on_grid(app, BORDER_TOP_RIGHT_CORNER, gw-1, 0);
+  draw_glyph_on_grid(app, BORDER_BOTTOM_LEFT_CORNER, 0, gh-1);
+  draw_glyph_on_grid(app, BORDER_BOTTOM_RIGHT_CORNER, gw-1, gh-1);
+
+  // draws the columns
+  int r;
+  for (r = 1; r<gh-1; r++) {
+     draw_glyph_on_grid(app, BORDER_COLUMN_LEFT, 0, r);
+  }
+  for (r = 1; r<gh-1; r++) {
+     draw_glyph_on_grid(app, BORDER_COLUMN_RIGHT, gw-1, r);
+  }
+
+  // draws the rows
+  int c;
+  for (c = 1; c<gw-1; c++) {
+     draw_glyph_on_grid(app, BORDER_ROW_TOP, c, 0);
+  }
+  for (c = 1; c<gw-1; c++) {
+     draw_glyph_on_grid(app, BORDER_ROW_BOTTOM, c, gh-1);
+  }
+}
 
 // runs 30 times per second
 static void update_screen(TempleApp* app) {
   SDL_SetRenderDrawColor(app->renderer, 255, 255, 255, 255);
   SDL_RenderClear(app->renderer);
-  
-  update_cursor();
-  update_window();
-  draw_window_decorations();
+
+  update_window(app);
+  update_cursor(app);
+  draw_window_decorations(app);
 
   (app->draw_it)();
-
-  SDL_Rect dstrect = {0,0, 32, 32};
-  SDL_RenderCopy(app->renderer, glyphs_texture, &glyphs[20], &dstrect);
-
+    
   SDL_RenderPresent(app->renderer);
 }
 
 TempleApp* tl_create_app(int argc, char *argv[]) {
   TempleApp* app = malloc(sizeof(TempleApp));
 
-  // sets default app title
+  // sets default app data
   app->title = "TempleLib App";
-
+  app->scale = 2;
+  
   if (SDL_Init(SDL_INIT_VIDEO) < 0) {
     printf("Could not init SDL: %s\n", SDL_GetError());
     exit(1);
@@ -83,10 +129,25 @@ void tl_run_app(TempleApp* app) {
   }
 
   load_glyphs(app);
+
+  app->real_glyph_size = app->scale * GLYPH_SIZE;
+
+  SDL_Event event;
   
   while (1) {
-    update_screen(app);
+    while (SDL_PollEvent(&event)) {
+      switch (event.type) {
+      case SDL_QUIT:
+	exit(0);
+	break;
 
+      default:
+	break;
+      }
+    } 
+    
+    update_screen(app);
+    
     sleep(33/1000);
   };
 }
