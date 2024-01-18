@@ -1,7 +1,7 @@
 #include <SDL2/SDL.h>
-#include "colors.h"
 #include "templelib.h"
 #include "glyphs.h"
+#include "colors.h"
 
 void draw_glyph_on_grid(TempleApp* app, int gi, int gx, int gy) {
   // the actual position on the window

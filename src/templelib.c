@@ -1,8 +1,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <unistd.h>
-#include "colors.h"
 #include "templelib.h"
+#include "colors.h"
 #include "gr.h"
 #include "glyphs.h"
 
@@ -36,12 +36,12 @@ void update_cursor(TempleApp* app) {
   
 }
 
-// draws the window border and decorations
-void draw_window_decorations(TempleApp* app) {
+// draws the border of the window
+void draw_window_border(TempleApp* app) {
   int gw, gh;
   get_window_grid_size(app, &gw, &gh);
 
-  SDL_SetTextureColorMod(glyphs_texture, BLUE);
+  set_color(app, BLUE);
 
   // draws the corners
   draw_glyph_on_grid(app, BORDER_TOP_LEFT_CORNER, 0, 0);
@@ -68,9 +68,14 @@ void draw_window_decorations(TempleApp* app) {
   }
 }
 
+// draws the window border and decorations
+void draw_window_decorations(TempleApp* app) {
+  draw_window_border(app);
+}
+
 // runs 30 times per second
 static void update_screen(TempleApp* app) {
-  SDL_SetRenderDrawColor(app->renderer, 255, 255, 255, 255);
+  set_color(app, WHITE);
   SDL_RenderClear(app->renderer);
 
   update_window(app);
