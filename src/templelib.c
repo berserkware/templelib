@@ -1,9 +1,9 @@
-#include <gtk/gtk.h>
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <unistd.h>
 #include "colors.h"
 #include "templelib.h"
-
-TempleApp* active_app = NULL;
+#include "glyphs.h"
 
 // Updates the window's postion and size.
 static void update_window() {
@@ -16,75 +16,77 @@ static void update_cursor() {
 }
 
 // draws the window border and decorations
-static void draw_window_decorations(GtkWidget *widget, cairo_t *cr, gpointer user_data) {
-  GtkAllocation allocation;
-  gtk_widget_get_allocation(active_app->window, &allocation);
-
-  int window_width = allocation.width;
-  int window_height = allocation.height;
-
-  // Draw background
-  cairo_set_source_rgb(cr, WHITE); 
-  cairo_paint(cr);
-
-  int line_width = 3;
-  
-  cairo_set_source_rgb(cr, BLUE);
-  cairo_set_line_width(cr, line_width);
-  
-  // Draw outer ring
-  cairo_rectangle(cr, 8, 11, window_width - 16, window_height - 22);
-  cairo_stroke(cr);
-  cairo_rectangle(cr, 11, 11, window_width - 22, window_height - 22);
-  cairo_stroke(cr);
-
-  // Draw inner ring
-  cairo_rectangle(cr, 17, 17, window_width - 34, window_height - 34);
-  cairo_stroke(cr);
-  cairo_rectangle(cr, 20, 17, window_width - 40, window_height - 34);
-  cairo_stroke(cr);
+static void draw_window_decorations() {
 }
 
 
 // runs 30 times per second
-static void draw_event(GtkWidget *widget, cairo_t *cr, gpointer user_data) {
+static void update_screen(TempleApp* app) {
+  SDL_SetRenderDrawColor(app->renderer, 255, 255, 255, 255);
+  SDL_RenderClear(app->renderer);
+  
   update_cursor();
   update_window();
-  draw_window_decorations(widget, cr, user_data);
-}
+  draw_window_decorations();
 
-// called by timer.
-static gboolean update_drawing_area(gpointer data) {
-    gtk_widget_queue_draw(active_app->drawing_area); 
-    return TRUE;
+  (app->draw_it)();
+
+  SDL_Rect dstrect = {0,0, 32, 32};
+  SDL_RenderCopy(app->renderer, glyphs_texture, &glyphs[20], &dstrect);
+
+  SDL_RenderPresent(app->renderer);
 }
 
 TempleApp* tl_create_app(int argc, char *argv[]) {
   TempleApp* app = malloc(sizeof(TempleApp));
 
-  gtk_init(&argc, &argv);
+  // sets default app title
+  app->title = "TempleLib App";
 
-  app->window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+  if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+    printf("Could not init SDL: %s\n", SDL_GetError());
+    exit(1);
+  }
 
-  // removes the window decorations for the window, so we can handle it ourselves.
-  gtk_window_set_decorated(GTK_WINDOW(app->window), FALSE);
-  gtk_window_set_default_size(GTK_WINDOW(app->window), 320, 220);
-  
-  app->drawing_area = gtk_drawing_area_new();
-  gtk_container_add(GTK_CONTAINER(app->window), app->drawing_area);
-
-  g_signal_connect(G_OBJECT(app->window), "destroy", G_CALLBACK(gtk_main_quit), NULL);
-  g_signal_connect(G_OBJECT(app->drawing_area), "draw", G_CALLBACK(draw_event), NULL);
-
-  // adds a 30 fps timer to emulate TempleOS's 30 fps cap.
-  g_timeout_add(33, (GSourceFunc)update_drawing_area, NULL);
+  if (IMG_Init(IMG_INIT_PNG) < 0) {
+    printf("Could not init SDL_image: %s\n", IMG_GetError());
+    exit(1);
+  }
   
   return app;
 }
 
 void tl_run_app(TempleApp* app) {
-  active_app = app;
+  int window_flags = SDL_WINDOW_BORDERLESS;
   
-  gtk_widget_show_all(app->window);
-  gtk_main();
+  app->window = SDL_CreateWindow(
+				 app->title,
+				 SDL_WINDOWPOS_UNDEFINED,
+				 SDL_WINDOWPOS_UNDEFINED,
+				 300,
+				 200,
+				 window_flags
+				 );
+
+  if (!app->window) {
+    printf("Failed to open window: %s\n", SDL_GetError());
+    exit(1);
+  }
+
+  int renderer_flags = SDL_RENDERER_ACCELERATED;
+
+  SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "0");
+  app->renderer = SDL_CreateRenderer(app->window, -1, renderer_flags);
+
+  if (!app->renderer) {
+    printf("Failed to create renderer: %s\n", SDL_GetError());
+  }
+
+  load_glyphs(app);
+  
+  while (1) {
+    update_screen(app);
+
+    sleep(33/1000);
+  };
 }

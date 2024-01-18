@@ -3,17 +3,12 @@
 
 // This contains the data and config for the app.
 typedef struct {
-  GtkWidget *window;
-  GtkWidget *drawing_area;
+  SDL_Renderer *renderer;
+  SDL_Window *window;
   char* title;
-  void (*draw_it);
-  int border_scale;
-  int text_scale;
+  void (*draw_it)();
+  int scale;
 } TempleApp;
-
-
-// The app that is currently being run.
-extern TempleApp* active_app;
 
 // Creates an App.
 TempleApp* tl_create_app();
