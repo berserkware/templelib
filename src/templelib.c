@@ -1,6 +1,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <unistd.h>
+#include "input.h"
 #include "colors.h"
 #include "gr.h"
 #include "glyphs.h"
@@ -29,11 +30,6 @@ void update_window(TempleApp* app) {
   if (h % app->real_glyph_size != 0) {
     SDL_SetWindowSize(app->window, w, h-(h % app->real_glyph_size));
   }
-}
-
-// Updates the cursor type
-void update_cursor(TempleApp* app) {
-  
 }
 
 // draws the border of the window
@@ -78,12 +74,12 @@ static void update_screen(TempleApp* app) {
   set_color(app, WHITE);
   SDL_RenderClear(app->renderer);
 
+  update_mouse_state(app);
   update_window(app);
-  update_cursor(app);
   draw_window_decorations(app);
 
   (app->draw_it)();
-    
+
   SDL_RenderPresent(app->renderer);
 }
 
@@ -114,8 +110,8 @@ void tl_run_app(TempleApp* app) {
 				 app->title,
 				 SDL_WINDOWPOS_UNDEFINED,
 				 SDL_WINDOWPOS_UNDEFINED,
-				 300,
-				 200,
+				 550,
+				 800,
 				 window_flags
 				 );
 

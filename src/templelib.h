@@ -13,6 +13,10 @@ typedef struct {
   int real_glyph_size;
 } TempleApp;
 
+// Gets the window grid size by dividing the window width by the
+// scaled glyph size
+void get_window_grid_size(TempleApp* app, int* gw, int* gh);
+
 // Stops running an app.
 void tl_quit_app(TempleApp* app, int code);
 
