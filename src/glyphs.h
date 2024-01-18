@@ -1,6 +1,8 @@
 #ifndef GLYPHS_H
 #define GLYPHS_H
 
+#include <SDL2/SDL.h>
+
 // Defines the index of the border glyphs
 #define BORDER_COLUMN_LEFT 94
 #define BORDER_COLUMN_RIGHT 95

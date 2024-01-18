@@ -1,6 +1,8 @@
 #ifndef TEMPLELIB_H
 #define TEMPLELIB_H
 
+#include <SDL2/SDL.h>
+
 // This contains the data and config for the app.
 typedef struct {
   SDL_Renderer *renderer;

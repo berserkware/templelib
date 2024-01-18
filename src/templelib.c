@@ -1,10 +1,10 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <unistd.h>
-#include "templelib.h"
 #include "colors.h"
 #include "gr.h"
 #include "glyphs.h"
+#include "templelib.h"
 
 // Gets the window grid size by dividing the window width by the
 // scaled glyph size
