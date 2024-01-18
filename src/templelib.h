@@ -11,6 +11,9 @@ typedef struct {
   int real_glyph_size;
 } TempleApp;
 
+// Stops running an app.
+void tl_quit_app(TempleApp* app, int code);
+
 // Creates an App.
 TempleApp* tl_create_app();
 

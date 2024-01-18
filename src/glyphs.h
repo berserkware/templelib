@@ -15,7 +15,10 @@ extern SDL_Texture* glyphs_texture;
 
 extern SDL_Rect* glyphs;
 
-// Loads the glyph texture, and calculattes the rects.
+// Loads the glyph texture, and calculates the rects.
 void load_glyphs();
+
+// Frees the glyph textures and rects.
+void free_glyphs();
 
 #endif

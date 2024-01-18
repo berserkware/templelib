@@ -47,3 +47,8 @@ void load_glyphs(TempleApp* app) {
 
   glyphs_texture = SDL_CreateTextureFromSurface(app->renderer, glyphs_img);
 }
+
+void free_glyphs() {
+  free(glyphs_texture);
+  free(glyphs);
+}
