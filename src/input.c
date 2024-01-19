@@ -2,6 +2,7 @@
 #include <SDL2/SDL_image.h>
 #include <unistd.h>
 #include "input.h"
+#include "window.h"
 #include "templelib.h"
 
 struct MouseState ms;
