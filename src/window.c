@@ -21,7 +21,7 @@ void update_window(TempleApp* app) {
   int w, h;
   SDL_GetWindowSize(app->window, &w, &h);
   
-  // Makes sure window width and height is alligned with spritet size
+  // Makes sure window width and height is aligned with sprite size
   if (w % app->real_glyph_size != 0) {
     SDL_SetWindowSize(app->window, w-(w % app->real_glyph_size), h);
   }
@@ -62,7 +62,23 @@ void draw_window_border(TempleApp* app) {
   }
 }
 
+void draw_close_button(TempleApp* app) {
+  int gw, gh;
+  get_window_grid_size(app, &gw, &gh);
+  
+  set_color(app, WHITE);
+  draw_glyph_on_grid(app, SOLID_BLOCK, gw-2, 0);
+  draw_glyph_on_grid(app, SOLID_BLOCK, gw-3, 0);
+  draw_glyph_on_grid(app, SOLID_BLOCK, gw-4, 0);
+
+  set_color(app,BLUE);
+  draw_glyph_on_grid(app, 60, gw-2, 0);
+  draw_glyph_on_grid(app, 55, gw-3, 0);
+  draw_glyph_on_grid(app, 58, gw-4, 0);
+}
+
 // draws the window border and decorations
 void draw_window_decorations(TempleApp* app) {
   draw_window_border(app);
+  draw_close_button(app);
 }

@@ -12,6 +12,7 @@
 #define BORDER_BOTTOM_RIGHT_CORNER 99
 #define BORDER_ROW_TOP 100
 #define BORDER_ROW_BOTTOM 101
+#define SOLID_BLOCK 102
 
 extern SDL_Texture* glyphs_texture;
 

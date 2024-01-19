@@ -3,6 +3,8 @@
 
 #include <SDL2/SDL.h>
 
+typedef struct ButtonNode ButtonNode; 
+
 // This contains the data and config for the app.
 typedef struct {
   SDL_Renderer *renderer;
@@ -11,6 +13,7 @@ typedef struct {
   void (*draw_it)();
   int scale;
   int real_glyph_size;
+  ButtonNode* button_head;
 } TempleApp;
 
 // Stops running an app.
