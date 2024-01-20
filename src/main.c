@@ -1,8 +1,6 @@
 #include <stdio.h>
-//#include <SDL2/SDL.h>
 #include "templelib.h"
 #include "gr.h"
-#include "doc.h"
 #include "input.h"
 
 TempleApp* app;
