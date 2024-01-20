@@ -15,21 +15,21 @@ void get_window_grid_size(TempleApp* app, int* gw, int* gh) {
   *gh = h / app->real_glyph_size;
 }
 
-// Updates the window's postion and size.
-void update_window(TempleApp* app) {
-
+// Aligns the window size to the glyph size
+void align_size_to_glyphs(TempleApp* app) {
   int w, h;
   SDL_GetWindowSize(app->window, &w, &h);
   
-  // Makes sure window width and height is aligned with glyph size.
   if (w % app->real_glyph_size != 0) {
     SDL_SetWindowSize(app->window, w-(w % app->real_glyph_size), h);
   }
   if (h % app->real_glyph_size != 0) {
     SDL_SetWindowSize(app->window, w, h-(h % app->real_glyph_size));
   }
+}
 
-  // Makes sure window is on grid.
+// Aligns the window postion to the global glyph grid
+void align_pos_to_grid(TempleApp* app) {
   int x, y;
   SDL_GetWindowPosition(app->window, &x, &y);
   
@@ -42,55 +42,8 @@ void update_window(TempleApp* app) {
   }
 }
 
-// draws the border of the window
-void draw_window_border(TempleApp* app) {
-  int gw, gh;
-  get_window_grid_size(app, &gw, &gh);
-
-  set_color(app, BLUE);
-
-  // draws the corners
-  draw_glyph_on_grid(app, BORDER_TOP_LEFT_CORNER, 0, 0);
-  draw_glyph_on_grid(app, BORDER_TOP_RIGHT_CORNER, gw-1, 0);
-  draw_glyph_on_grid(app, BORDER_BOTTOM_LEFT_CORNER, 0, gh-1);
-  draw_glyph_on_grid(app, BORDER_BOTTOM_RIGHT_CORNER, gw-1, gh-1);
-
-  // draws the columns
-  int r;
-  for (r = 1; r<gh-1; r++) {
-     draw_glyph_on_grid(app, BORDER_COLUMN_LEFT, 0, r);
-  }
-  for (r = 1; r<gh-1; r++) {
-     draw_glyph_on_grid(app, BORDER_COLUMN_RIGHT, gw-1, r);
-  }
-
-  // draws the rows
-  int c;
-  for (c = 1; c<gw-1; c++) {
-     draw_glyph_on_grid(app, BORDER_ROW_TOP, c, 0);
-  }
-  for (c = 1; c<gw-1; c++) {
-     draw_glyph_on_grid(app, BORDER_ROW_BOTTOM, c, gh-1);
-  }
-}
-
-void draw_close_button(TempleApp* app) {
-  int gw, gh;
-  get_window_grid_size(app, &gw, &gh);
-  
-  set_color(app, WHITE);
-  draw_glyph_on_grid(app, SOLID_BLOCK, gw-2, 0);
-  draw_glyph_on_grid(app, SOLID_BLOCK, gw-3, 0);
-  draw_glyph_on_grid(app, SOLID_BLOCK, gw-4, 0);
-
-  set_color(app,BLUE);
-  draw_glyph_on_grid(app, 60, gw-2, 0);
-  draw_glyph_on_grid(app, 55, gw-3, 0);
-  draw_glyph_on_grid(app, 58, gw-4, 0);
-}
-
-// draws the window border and decorations
-void draw_window_decorations(TempleApp* app) {
-  draw_window_border(app);
-  draw_close_button(app);
+// Updates the window's postion and size.
+void update_window(TempleApp* app) {
+  align_size_to_glyphs(app);
+  align_pos_to_grid(app);
 }

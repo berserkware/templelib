@@ -8,6 +8,4 @@ void get_window_grid_size(TempleApp* app, int* gw, int* gh);
 
 void update_window(TempleApp* app);
 
-void draw_window_decorations(TempleApp* app);
-
 #endif
