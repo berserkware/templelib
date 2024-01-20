@@ -8,7 +8,7 @@
 TempleApp* app;
 
 void draw_it() {
-  draw_glyph_on_grid(app, 0, ms.x_text+1, ms.y_text+1);
+  draw_glyph_on_grid(app, 0, ms.pos_text.x, ms.pos_text.y);
 }
 
 int main(int argc, char *argv[]) {

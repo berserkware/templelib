@@ -68,7 +68,7 @@ static void update(TempleApp* app) {
   update_mouse_state(app);
   update_window(app);
   draw_window_decorations(app);
-
+  
   (app->draw_it)();
 
   SDL_RenderPresent(app->renderer);

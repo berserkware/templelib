@@ -47,10 +47,16 @@ Button* get_button(TempleApp* app, int id) {
   return NULL;
 }
 
-// TODO: Bug where if id is first item, it might cause an error.
 int delete_button(TempleApp* app, int id) {
   ButtonNode* current = app->button_head;
   ButtonNode* prev = app->button_head;
+
+  // Deletes the first element if it matches
+  if (current->id == id) {
+    app->button_head = current->next;
+    free(current);
+    return 1;
+  }
   
   while (current->next != NULL) {
     if (current->id == id) {
@@ -62,6 +68,7 @@ int delete_button(TempleApp* app, int id) {
     current = current->next;
   }
 
+  // Deletes the last element.
   if (current->id == id) {
      prev = current->next;
      free(current);

@@ -21,12 +21,24 @@ void update_window(TempleApp* app) {
   int w, h;
   SDL_GetWindowSize(app->window, &w, &h);
   
-  // Makes sure window width and height is aligned with sprite size
+  // Makes sure window width and height is aligned with glyph size.
   if (w % app->real_glyph_size != 0) {
     SDL_SetWindowSize(app->window, w-(w % app->real_glyph_size), h);
   }
   if (h % app->real_glyph_size != 0) {
     SDL_SetWindowSize(app->window, w, h-(h % app->real_glyph_size));
+  }
+
+  // Makes sure window is on grid.
+  int x, y;
+  SDL_GetWindowPosition(app->window, &x, &y);
+  
+  if (x % app->real_glyph_size != 0) {
+    SDL_SetWindowPosition(app->window, x+(x % app->real_glyph_size), y);
+  }
+
+  if (y % app->real_glyph_size != 0) {
+    SDL_SetWindowPosition(app->window, x, y+(y % app->real_glyph_size));
   }
 }
 

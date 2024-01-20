@@ -6,18 +6,21 @@
 
 // This contains the data about the mouse
 struct MouseState {
-  int x,          // x postion in pixels
-    y,            // y postion in pixels
-    x_text,       // x postion in text columns
-    y_text,       // y postion in text rows
-    
-    real_x,       // These four are the last four, but include the window border
-    real_y,       // You should not use these directory, Use the ones wihtout
-    real_x_text,  // the real_ prefix.
-    real_y_text,  //
-    
-    lb,           // Left Button
-    rb;            // Right Button
+  struct {        // The position of the mouse in pixels
+    int x, y;
+  } pos;
+  struct {        // The position of the mouse in text columns and rows
+    int x, y;
+  } pos_text;
+  struct {        // The global (screen) position of the mouse in pixels.
+    int x, y;
+  } global_pos;
+  struct {        // The global (screen) position on the mouse in text columns and rows.
+    int x, y;
+  } global_pos_text;
+  
+  int lb,         // Left Button
+    rb;           // Right Button
 };
 
 extern struct MouseState ms;
