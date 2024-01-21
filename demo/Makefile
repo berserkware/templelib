@@ -87,14 +87,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/caleb/Berserkware/Projects/C/templelib/CMakeFiles /run/media/caleb/Berserkware/Projects/C/templelib//CMakeFiles/progress.marks
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
+	cd /run/media/caleb/Berserkware/Projects/C/templelib && $(CMAKE_COMMAND) -E cmake_progress_start /run/media/caleb/Berserkware/Projects/C/templelib/CMakeFiles /run/media/caleb/Berserkware/Projects/C/templelib/demo//CMakeFiles/progress.marks
+	cd /run/media/caleb/Berserkware/Projects/C/templelib && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 demo/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /run/media/caleb/Berserkware/Projects/C/templelib/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 clean
+	cd /run/media/caleb/Berserkware/Projects/C/templelib && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 demo/clean
 .PHONY : clean
 
 # The main clean target
@@ -103,44 +103,56 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /run/media/caleb/Berserkware/Projects/C/templelib && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 demo/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 preinstall
+	cd /run/media/caleb/Berserkware/Projects/C/templelib && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 demo/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /run/media/caleb/Berserkware/Projects/C/templelib && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
-#=============================================================================
-# Target rules for targets named templelib
+# Convenience name for target.
+demo/CMakeFiles/demo.dir/rule:
+	cd /run/media/caleb/Berserkware/Projects/C/templelib && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 demo/CMakeFiles/demo.dir/rule
+.PHONY : demo/CMakeFiles/demo.dir/rule
 
-# Build rule for target.
-templelib: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 templelib
-.PHONY : templelib
-
-# fast build rule for target.
-templelib/fast:
-	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/templelib.dir/build.make src/CMakeFiles/templelib.dir/build
-.PHONY : templelib/fast
-
-#=============================================================================
-# Target rules for targets named demo
-
-# Build rule for target.
-demo: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 demo
+# Convenience name for target.
+demo: demo/CMakeFiles/demo.dir/rule
 .PHONY : demo
 
 # fast build rule for target.
 demo/fast:
-	$(MAKE) $(MAKESILENT) -f demo/CMakeFiles/demo.dir/build.make demo/CMakeFiles/demo.dir/build
+	cd /run/media/caleb/Berserkware/Projects/C/templelib && $(MAKE) $(MAKESILENT) -f demo/CMakeFiles/demo.dir/build.make demo/CMakeFiles/demo.dir/build
 .PHONY : demo/fast
+
+main.o: main.c.o
+.PHONY : main.o
+
+# target to build an object file
+main.c.o:
+	cd /run/media/caleb/Berserkware/Projects/C/templelib && $(MAKE) $(MAKESILENT) -f demo/CMakeFiles/demo.dir/build.make demo/CMakeFiles/demo.dir/main.c.o
+.PHONY : main.c.o
+
+main.i: main.c.i
+.PHONY : main.i
+
+# target to preprocess a source file
+main.c.i:
+	cd /run/media/caleb/Berserkware/Projects/C/templelib && $(MAKE) $(MAKESILENT) -f demo/CMakeFiles/demo.dir/build.make demo/CMakeFiles/demo.dir/main.c.i
+.PHONY : main.c.i
+
+main.s: main.c.s
+.PHONY : main.s
+
+# target to generate assembly for a file
+main.c.s:
+	cd /run/media/caleb/Berserkware/Projects/C/templelib && $(MAKE) $(MAKESILENT) -f demo/CMakeFiles/demo.dir/build.make demo/CMakeFiles/demo.dir/main.c.s
+.PHONY : main.c.s
 
 # Help Target
 help:
@@ -151,7 +163,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... demo"
-	@echo "... templelib"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 
@@ -163,6 +177,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /run/media/caleb/Berserkware/Projects/C/templelib && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
