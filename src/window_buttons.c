@@ -10,11 +10,13 @@ int top_move_window_button_id;
 int left_move_window_button_id;
 int bottom_resize_window_button_id;
 int right_resize_window_button_id;
+int bottom_right_resize_window_button_id;
 
 int close_window_button_callback(TempleApp* app);
 int move_window_button_callback(TempleApp* app);
 int bottom_resize_window_button_callback(TempleApp* app);
 int right_resize_window_button_callback(TempleApp* app);
+int bottom_right_resize_window_button_callback(TempleApp* app);
 
 
 void add_window_buttons(TempleApp* app) {
@@ -75,6 +77,17 @@ void add_window_buttons(TempleApp* app) {
   right_resize_window_button->pos.y = 0;
   right_resize_window_button->currently_running = 0;
   right_resize_window_button_id = add_button(app, right_resize_window_button);
+
+   // Adds the right resize button.
+  Button* bottom_right_resize_window_button = malloc(sizeof(Button));
+  bottom_right_resize_window_button->length = 1;
+  bottom_right_resize_window_button->on_y = 1;
+  bottom_right_resize_window_button->priority = 1;
+  bottom_right_resize_window_button->callback = &bottom_right_resize_window_button_callback;
+  bottom_right_resize_window_button->pos.x = gw-1;
+  bottom_right_resize_window_button->pos.y = gh-1;
+  bottom_right_resize_window_button->currently_running = 0;
+  bottom_right_resize_window_button_id = add_button(app, bottom_right_resize_window_button);
 }
 
 void update_window_buttons(TempleApp* app) {
@@ -97,6 +110,10 @@ void update_window_buttons(TempleApp* app) {
   Button* right_resize_window_button = get_button(app, right_resize_window_button_id);
   right_resize_window_button->length = gh-1;
   right_resize_window_button->pos.x = gw-1;
+
+  Button* bottom_right_resize_window_button = get_button(app, bottom_right_resize_window_button_id);
+  bottom_right_resize_window_button->length = gh-1;
+  bottom_right_resize_window_button->pos.x = gw-1;
 }
 
 int close_window_button_callback(TempleApp* app) {
@@ -172,6 +189,26 @@ int right_resize_window_button_callback(TempleApp* app) {
 		    app->window,
 		    (ms.global_pos_text.x - gx+1)*app->real_glyph_size,
 		    gh*app->real_glyph_size
+		    );
+  
+  return 1;
+}
+
+int bottom_right_resize_window_button_callback(TempleApp* app) {
+  if (!ms.lb) {
+    return 0;
+  }
+
+  int gw, gh;
+  get_window_grid_size(app, &gw, &gh);
+
+  int gx, gy;
+  get_window_grid_position(app, &gx, &gy);
+
+  SDL_SetWindowSize(
+		    app->window,
+		    (ms.global_pos_text.x - gx+1)*app->real_glyph_size,
+		    (ms.global_pos_text.y - gy+1)*app->real_glyph_size
 		    );
   
   return 1;
