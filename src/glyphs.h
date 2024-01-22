@@ -24,4 +24,7 @@ void load_glyphs();
 // Frees the glyph textures and rects.
 void free_glyphs();
 
+// Takes an ascii char and get the corrosponding glyph.
+int char_to_glyph_index(char c);
+
 #endif

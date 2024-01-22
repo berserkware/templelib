@@ -1,3 +1,4 @@
+#include <string.h>
 #include <SDL2/SDL.h>
 #include "window.h"
 #include "templelib.h"
@@ -38,6 +39,67 @@ void draw_window_border(TempleApp* app) {
   }
 }
 
+void draw_titlebar(TempleApp* app) {
+  char *title_to_render = malloc(strlen(app->title) + 3 + 1); 
+  strcpy(title_to_render, app->title);
+  strcat(title_to_render, "...");
+  
+  int gw, gh;
+  get_window_grid_size(app, &gw, &gh);
+
+  int titlebar_length = gw / 3;
+
+  if (titlebar_length < 3) {
+    return;
+  }
+
+  if (titlebar_length > strlen(title_to_render)) {
+    titlebar_length = strlen(title_to_render);
+  }
+
+  int titlebar_start = (gw/2)-(titlebar_length/2);
+
+  set_color(app,BLUE);
+  for (int i=titlebar_start-1; i<titlebar_start+titlebar_length; i++) {
+     draw_glyph_on_grid(app, SOLID_BLOCK, i, 0);
+  }
+
+  char display_buffer[titlebar_length];
+  static int current_index = 0;
+  static int pixel_offset = 0;
+
+  set_color(app,WHITE);
+
+  for(int i = 0; i < titlebar_length; i++) {
+    display_buffer[i] = title_to_render[(i+current_index) % strlen(title_to_render)];
+  }
+
+  draw_glyph_sentence(
+		      app,
+		      display_buffer,
+		      titlebar_length,
+		      (titlebar_start*app->real_glyph_size)-pixel_offset,
+		      0
+		      );
+
+  static int frames_since_last_move = 0;
+  if (frames_since_last_move >= 70) {
+    pixel_offset += 1;
+    frames_since_last_move = 0;
+  }
+
+  frames_since_last_move += 1;
+
+  if (pixel_offset >= app->real_glyph_size) {
+    pixel_offset = 0;
+    current_index++;
+  }
+
+  if (current_index >= strlen(title_to_render)) {
+    current_index = 0;
+  }
+}
+
 void draw_close_button(TempleApp* app) {
   int gw, gh;
   get_window_grid_size(app, &gw, &gh);
@@ -57,4 +119,5 @@ void draw_close_button(TempleApp* app) {
 void draw_window_decorations(TempleApp* app) {
   draw_window_border(app);
   draw_close_button(app);
+  draw_titlebar(app);
 }

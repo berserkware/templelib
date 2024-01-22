@@ -52,3 +52,15 @@ void free_glyphs() {
   free(glyphs_texture);
   free(glyphs);
 }
+
+int char_to_glyph_index(char c) {
+  if (c < 33) {
+    return -1;
+  }
+
+  if (c > 126) {
+    return -1;
+  }
+
+  return c - 33;
+}
