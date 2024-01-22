@@ -15,6 +15,14 @@ void get_window_grid_size(TempleApp* app, int* gw, int* gh) {
   *gh = h / app->real_glyph_size;
 }
 
+void get_window_grid_position(TempleApp* app, int* gx, int* gy) {
+  int x, y;
+  SDL_GetWindowPosition(app->window, &x, &y);
+
+  *gx = x / app->real_glyph_size;
+  *gy = y / app->real_glyph_size;
+}
+
 // Aligns the window size to the glyph size
 void align_size_to_glyphs(TempleApp* app) {
   int w, h;

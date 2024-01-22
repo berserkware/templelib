@@ -40,7 +40,7 @@ static void start(TempleApp* app) {
 				 SDL_WINDOWPOS_UNDEFINED,
 				 SDL_WINDOWPOS_UNDEFINED,
 				 550,
-				 800,
+				 300,
 				 window_flags
 				 );
 
