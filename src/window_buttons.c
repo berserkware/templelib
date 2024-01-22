@@ -70,54 +70,34 @@ int close_window_button_callback(TempleApp* app) {
 }
 
 int move_window_button_callback(TempleApp* app) {
-  static int has_mouse_been_updated = 0;
-  static struct MouseState last_updated_mouse;
+  static int has_function_started = 0;
+  static struct MouseState starting_mouse_position;
 
-  if (!has_mouse_been_updated) {
-    last_updated_mouse = ms;
-    has_mouse_been_updated = 1;
+  if (!has_function_started) {
+    starting_mouse_position = ms;
+    has_function_started = 1;
   }
 
   if (!ms.lb) {
-    has_mouse_been_updated = 0;
+    has_function_started = 0;
     return 0;
   }
 
-  int gx, gy;
-  get_window_grid_position(app, &gx, &gy);
-  
-  if (last_updated_mouse.global_pos_text.y > ms.global_pos_text.y) {
-    SDL_SetWindowPosition(
-			  app->window,
-			  gx*app->real_glyph_size,
-			  (gy-1)*app->real_glyph_size
-			  );
+  int is_on_y = starting_mouse_position.pos_text.x == 0;
+
+  if(!is_on_y) {
+     SDL_SetWindowPosition(
+			   app->window,
+			   ((starting_mouse_position.global_pos_text.x-starting_mouse_position.pos_text.x)-(starting_mouse_position.global_pos_text.x-ms.global_pos_text.x))*app->real_glyph_size,
+			   ms.global_pos_text.y*app->real_glyph_size
+			   );
+  } else {
+     SDL_SetWindowPosition(
+			   app->window,
+			   ms.global_pos_text.x*app->real_glyph_size,
+			   ((starting_mouse_position.global_pos_text.y-starting_mouse_position.pos_text.y)-(starting_mouse_position.global_pos_text.y-ms.global_pos_text.y))*app->real_glyph_size
+			   );
   }
 
-  if (last_updated_mouse.global_pos_text.y < ms.global_pos_text.y) {
-    SDL_SetWindowPosition(
-			  app->window,
-			  gx*app->real_glyph_size,
-			  (gy+1)*app->real_glyph_size)
-      ;
-  }
-  
-  if (last_updated_mouse.global_pos_text.x > ms.global_pos_text.x) {
-    SDL_SetWindowPosition(
-			  app->window,
-			  (gx-1)*app->real_glyph_size,
-			  gy*app->real_glyph_size
-			  );
-  }
-
-  if (last_updated_mouse.global_pos_text.x < ms.global_pos_text.x) {
-    SDL_SetWindowPosition(
-			  app->window,
-			  (gx+1)*app->real_glyph_size,
-			  gy*app->real_glyph_size
-			  );
-  }
-
-  last_updated_mouse = ms;
   return 1;
 }
