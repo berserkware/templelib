@@ -19,6 +19,10 @@ Please note that this is my first library using SDL and C, so the code might be 
  - Change the directory where the glyph sheet is stored.
  - Change the 30fps limit so that it only applies to the `draw_it` callback.
  - Change text case to what TempleOS uses (PascalCase).
+ - Moved Doc and Gr function to own directory instead of one file.
+ - Move Window Drawing functions to Gr dir.
+ - Custom cursor.
+ - Change "Button" to "Control". This name makes more sense becuase the buttons are also used for the window resizing and moving.
 ### Done
  - Custom window borders with movement and resizing.
 
