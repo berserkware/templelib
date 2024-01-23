@@ -31,20 +31,20 @@ Please note that this is my first library using SDL and C, so the code might be 
 ## Running/Using
 1. Download the source:
 ```sh
-    git clone https://github.com/Berserkware/templelib
-    cd templelib
+git clone https://github.com/Berserkware/templelib
+cd templelib
 ``` 
 2. Run CMake
 ```sh
-    cmake .
+cmake .
 ```
 3. Run Make
 ```sh
-    make
+make
 ```
 4. Run the demo
 ```sh
-    ./templelib/demo
+./templelib/demo
 ```
 To learn how to develop with the library, you can look through the source and demo code. I will create full
 documentation when the library is out of pre-alpha.
