@@ -6,7 +6,7 @@
 typedef TempleApp TempleApp;
 
 // A clickable location on the screen.
-typedef struct Button {
+typedef struct Control {
   struct {                // The position of the button in text.
     int x, y;
   } pos;
@@ -15,26 +15,26 @@ typedef struct Button {
     priority,             // The button with the highest priority gets clicked on a overlap
     currently_running,    // If the button callback hasn't returned false yet
     (*callback)(TempleApp* app);        // The callback to execute when the button is pressed
-} Button;
+} Control;
 
-// A linked list node for storing buttons with ids, so they can be created and deleted
+// A linked list node for storing ctrls with ids, so they can be created and deleted
 // easily.
-typedef struct ButtonNode {
+typedef struct CtrlNode {
   int id;
-  Button* button;
-  struct ButtonNode* next;
-} ButtonNode;
+  Control* ctrl;
+  struct CtrlNode* next;
+} CtrlNode;
 
-// Updates the buttons. Runs and manages the callbacks.
-void update_buttons(TempleApp* app);
+// Updates the ctrls. Runs and manages the callbacks.
+void update_ctrls(TempleApp* app);
 
-// Adds a button to an app, returns the id of the button
-int add_button(TempleApp* app, Button* b);
+// Adds a ctrl to an app, returns the id of the ctrl
+int add_ctrl(TempleApp* app, Control* c);
 
-// Gets a button by it's id. Returns a null pointer if not found
-Button* get_button(TempleApp* app, int id);
+// Gets a ctrl by it's id. Returns a null pointer if not found
+Control* get_ctrl(TempleApp* app, int id);
 
-// Deletes a button. Returns 1 if successful, 0 if the button couldn't be found.
-int delete_button(TempleApp* app, int id);
+// Deletes a ctrl. Returns 1 if successful, 0 if the ctrl couldn't be found.
+int delete_ctrl(TempleApp* app, int id);
 
 #endif

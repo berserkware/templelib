@@ -3,7 +3,7 @@
 
 #include <SDL2/SDL.h>
 
-typedef struct ButtonNode ButtonNode; 
+typedef struct CtrlNode CtrlNode; 
 
 // This contains the data and config for the app.
 typedef struct {
@@ -13,7 +13,7 @@ typedef struct {
   void (*draw_it)();
   int scale;
   int real_glyph_size;
-  ButtonNode* button_head;
+  CtrlNode* ctrl_head;
 } TempleApp;
 
 // Stops running an app.

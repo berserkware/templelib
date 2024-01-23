@@ -115,7 +115,7 @@ void draw_titlebar(TempleApp* app) {
   }
 }
 
-void draw_close_button(TempleApp* app) {
+void draw_close_ctrl(TempleApp* app) {
   int gw, gh;
   get_window_grid_size(app, &gw, &gh);
   
@@ -134,6 +134,6 @@ void draw_close_button(TempleApp* app) {
 void draw_window_decorations(TempleApp* app) {
   int flags = SDL_GetWindowFlags(app->window);
   draw_window_border(app, flags & SDL_WINDOW_INPUT_FOCUS);
-  draw_close_button(app);
+  draw_close_ctrl(app);
   draw_titlebar(app);
 }

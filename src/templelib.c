@@ -8,8 +8,8 @@
 #include "templelib.h"
 #include "window.h"
 #include "window_draw.h"
-#include "window_buttons.h"
-#include "button.h"
+#include "window_ctrls.h"
+#include "ctrl.h"
 
 TempleApp* tl_create_app(int argc, char *argv[]) {
   TempleApp* app = malloc(sizeof(TempleApp));
@@ -62,7 +62,7 @@ static void start(TempleApp* app) {
 
   app->real_glyph_size = app->scale * GLYPH_SIZE;
 
-  add_window_buttons(app);
+  add_window_ctrls(app);
 }
 
 // runs 30 times per second
@@ -72,8 +72,8 @@ static void update(TempleApp* app) {
 
   update_mouse_state(app);
   update_window(app);
-  update_buttons(app);
-  update_window_buttons(app);
+  update_ctrls(app);
+  update_window_ctrls(app);
   draw_window_decorations(app);
   
   (app->draw_it)();
