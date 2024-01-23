@@ -23,6 +23,8 @@ Please note that this is my first library using SDL and C, so the code might be 
  - Move Window Drawing functions to Gr dir.
  - Custom cursor.
  - Change "Button" to "Control". This name makes more sense becuase the buttons are also used for the window resizing and moving.
+ - Make single header file that included all the other header files. This is better copy how TempleOS handles includes.
+ - Fix the glyphsheet installer so it installs in make files, and not in the cmake file.
 ### Done
  - Custom window borders with movement and resizing.
 
