@@ -17,6 +17,7 @@ Please note that this is my first library using SDL and C, so the code might be 
  - Add Memory address to window border. I don't really know what I will use for this though.
  - Add compiling to a shared library.
  - Change the directory where the glyph sheet is stored.
+ - Change the 30fps limit so that it only applies to the `draw_it` callback.
 ### Done
  - Custom window borders with movement and resizing.
 
