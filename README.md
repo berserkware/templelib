@@ -1,7 +1,7 @@
 
 
 # TempleLib
-**Warning: The library is in extremely pre-alpha, and is far from feature complete.**
+**Warning: The library is in a very early pre-alpha stage, and is far from feature complete.**
 
 TempleLib is C library that aims to provide a development environment and UI similar to TempleOS. The goal is to create an almost 1:1 recreation of the graphics and doc API from TempleOS, without user programs needing to interact with any SDL data structures.
 
