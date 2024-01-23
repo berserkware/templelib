@@ -7,6 +7,8 @@ TempleLib is C library that aims to provide a development environment and UI sim
 
 Please note that this is my first library using SDL and C, so the code might be a bit amateur.
 
+![A window demoing TempleLib](images/window.png "Demo Window")
+
 ## TODO
  - Implement the full set of Graphics functions.
  - Implement the full set of Doc functions.
