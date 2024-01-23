@@ -53,5 +53,5 @@ documentation when the library is out of pre-alpha.
 Since the library is in early alpha, any contributions would be much appreciate. You can contribute by creating issues or pull requests. Also, feel free to majorly restructure parts of the code, since it isn't really set in stone.
 
 ### Known Bugs
- - If the window is touching the bottom of the screen, it goes super slow.
+ - If the window is touching the bottom of the screen, it goes super slow. I think this is because of the window position to text snapper. It is trying to move to where the taskbar is, but is blocked.
 

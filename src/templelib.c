@@ -74,9 +74,9 @@ static void update(TempleApp* app) {
   update_window(app);
   update_ctrls(app);
   update_window_ctrls(app);
-  draw_window_decorations(app);
-  
+
   (app->draw_it)();
+  draw_window_decorations(app);
 
   SDL_RenderPresent(app->renderer);
 }
