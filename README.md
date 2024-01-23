@@ -5,7 +5,7 @@
 
 TempleLib is C library that aims to provide a development environment and UI similar to TempleOS. The goal is to create an almost 1:1 recreation of the graphics and doc API from TempleOS, without user programs needing to interact with any SDL data structures.
 
-Please note that this is my first library using SDL and C, so the code might be a bit amateur.
+Please note that this is my first library using SDL and C, so the code might be a bit amateur. The library has only been tested on Linux, so it might not work on other platforms.
 
 ![A window demoing TempleLib](images/window.png "Demo Window")
 
