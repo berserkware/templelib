@@ -30,31 +30,27 @@ void draw_window_border(TempleApp* app, int in_focus) {
   // draws the columns
   int r;
   for (r = 1; r<gh-1; r++) {
-     if (in_focus)
+    if (in_focus) {
        draw_glyph_on_grid(app, BORDER_COLUMN_LEFT, 0, r);
-     else
-       draw_glyph_on_grid(app, SMALL_BORDER_COLUMN_LEFT, 0, r);
-  }
-  for (r = 1; r<gh-1; r++) {
-    if (in_focus)
-      draw_glyph_on_grid(app, BORDER_COLUMN_RIGHT, gw-1, r);
-    else
+       draw_glyph_on_grid(app, BORDER_COLUMN_RIGHT, gw-1, r);
+    }
+    else {
+      draw_glyph_on_grid(app, SMALL_BORDER_COLUMN_LEFT, 0, r);
       draw_glyph_on_grid(app, SMALL_BORDER_COLUMN_RIGHT, gw-1, r);
+    }
   }
 
   // draws the rows
   int c;
   for (c = 1; c<gw-1; c++) {
-     if (in_focus)
-       draw_glyph_on_grid(app, BORDER_ROW_TOP, c, 0);
-     else
-       draw_glyph_on_grid(app, SMALL_BORDER_ROW_TOP, c, 0);
-  }
-  for (c = 1; c<gw-1; c++) {
-    if (in_focus)
+    if (in_focus) {
+      draw_glyph_on_grid(app, BORDER_ROW_TOP, c, 0);
       draw_glyph_on_grid(app, BORDER_ROW_BOTTOM, c, gh-1);
-    else
+    }
+    else {
+      draw_glyph_on_grid(app, SMALL_BORDER_ROW_TOP, c, 0);
       draw_glyph_on_grid(app, SMALL_BORDER_ROW_BOTTOM, c, gh-1);
+    }
   }
 }
 
