@@ -8,34 +8,53 @@
 #include "window_draw.h"
 
 // draws the border of the window
-void draw_window_border(TempleApp* app) {
+void draw_window_border(TempleApp* app, int in_focus) {
   int gw, gh;
   get_window_grid_size(app, &gw, &gh);
 
   set_color(app, BLUE);
 
   // draws the corners
-  draw_glyph_on_grid(app, BORDER_TOP_LEFT_CORNER, 0, 0);
-  draw_glyph_on_grid(app, BORDER_TOP_RIGHT_CORNER, gw-1, 0);
-  draw_glyph_on_grid(app, BORDER_BOTTOM_LEFT_CORNER, 0, gh-1);
-  draw_glyph_on_grid(app, BORDER_BOTTOM_RIGHT_CORNER, gw-1, gh-1);
-
+  if (in_focus) {
+    draw_glyph_on_grid(app, BORDER_TOP_LEFT_CORNER, 0, 0);
+    draw_glyph_on_grid(app, BORDER_TOP_RIGHT_CORNER, gw-1, 0);
+    draw_glyph_on_grid(app, BORDER_BOTTOM_LEFT_CORNER, 0, gh-1);
+    draw_glyph_on_grid(app, BORDER_BOTTOM_RIGHT_CORNER, gw-1, gh-1);
+  } else {
+    draw_glyph_on_grid(app, SMALL_BORDER_TOP_LEFT_CORNER, 0, 0);
+    draw_glyph_on_grid(app, SMALL_BORDER_TOP_RIGHT_CORNER, gw-1, 0);
+    draw_glyph_on_grid(app, SMALL_BORDER_BOTTOM_LEFT_CORNER, 0, gh-1);
+    draw_glyph_on_grid(app, SMALL_BORDER_BOTTOM_RIGHT_CORNER, gw-1, gh-1);
+  }
+  
   // draws the columns
   int r;
   for (r = 1; r<gh-1; r++) {
-     draw_glyph_on_grid(app, BORDER_COLUMN_LEFT, 0, r);
+     if (in_focus)
+       draw_glyph_on_grid(app, BORDER_COLUMN_LEFT, 0, r);
+     else
+       draw_glyph_on_grid(app, SMALL_BORDER_COLUMN_LEFT, 0, r);
   }
   for (r = 1; r<gh-1; r++) {
-     draw_glyph_on_grid(app, BORDER_COLUMN_RIGHT, gw-1, r);
+    if (in_focus)
+      draw_glyph_on_grid(app, BORDER_COLUMN_RIGHT, gw-1, r);
+    else
+      draw_glyph_on_grid(app, SMALL_BORDER_COLUMN_RIGHT, gw-1, r);
   }
 
   // draws the rows
   int c;
   for (c = 1; c<gw-1; c++) {
-     draw_glyph_on_grid(app, BORDER_ROW_TOP, c, 0);
+     if (in_focus)
+       draw_glyph_on_grid(app, BORDER_ROW_TOP, c, 0);
+     else
+       draw_glyph_on_grid(app, SMALL_BORDER_ROW_TOP, c, 0);
   }
   for (c = 1; c<gw-1; c++) {
-     draw_glyph_on_grid(app, BORDER_ROW_BOTTOM, c, gh-1);
+    if (in_focus)
+      draw_glyph_on_grid(app, BORDER_ROW_BOTTOM, c, gh-1);
+    else
+      draw_glyph_on_grid(app, SMALL_BORDER_ROW_BOTTOM, c, gh-1);
   }
 }
 
@@ -117,7 +136,8 @@ void draw_close_button(TempleApp* app) {
 
 // draws the window border and decorations
 void draw_window_decorations(TempleApp* app) {
-  draw_window_border(app);
+  int flags = SDL_GetWindowFlags(app->window);
+  draw_window_border(app, flags & SDL_WINDOW_INPUT_FOCUS);
   draw_close_button(app);
   draw_titlebar(app);
 }
