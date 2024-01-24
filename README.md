@@ -14,7 +14,6 @@ Please note that this is my first library using SDL and C, so the code might be 
  - Implement the full set of Doc functions.
  - Keyboard input.
  - Scroll wheel support.
- - Add Memory address to window border. I don't really know what I will use for this though.
  - Add compiling to a shared library.
  - Change the directory where the glyph sheet is stored.
  - Change the 30fps limit so that it only applies to the `draw_it` callback.
@@ -27,6 +26,7 @@ Please note that this is my first library using SDL and C, so the code might be 
 ### Done
  - Custom window borders with movement and resizing.
  - Change "Button" to "Control". This name makes more sense becuase the buttons are also used for the window resizing and moving.
+ - Add Memory address to window border. I don't really know what I will use for this though.
 
 ## Running/Using
 1. Download the source:
