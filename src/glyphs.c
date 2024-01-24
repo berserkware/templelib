@@ -1,7 +1,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <stdio.h>
-#include "templelib.h"
+#include "app.h"
 #include "glyphs.h"
 
 SDL_Texture* glyphs_texture;

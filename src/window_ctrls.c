@@ -1,5 +1,5 @@
 #include <SDL2/SDL.h>
-#include "templelib.h"
+#include "app.h"
 #include "ctrl.h"
 #include "window.h"
 #include "window_ctrls.h"

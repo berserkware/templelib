@@ -1,7 +1,7 @@
 #include <SDL2/SDL.h>
 #include "window.h"
 #include "input.h"
-#include "templelib.h"
+#include "app.h"
 #include "ctrl.h"
 
 // Checks if the mouse is hovering over a ctrl

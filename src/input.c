@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include "input.h"
 #include "window.h"
-#include "templelib.h"
+#include "app.h"
 
 struct MouseState ms;
 

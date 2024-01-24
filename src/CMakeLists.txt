@@ -2,13 +2,7 @@ find_package(SDL2 REQUIRED SDL2)
 find_package(SDL2_image REQUIRED)
 
 file(GLOB templelib_sources *.c)
-set(templelib_headers
-  templelib.h
-  input.h
-  gr.h
-  doc.h
-  colors.h
-)
+file(GLOB templelib_headers *.h)
 
 add_library(templelib STATIC ${templelib_sources})
 

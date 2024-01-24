@@ -5,7 +5,7 @@
 #include "colors.h"
 #include "gr.h"
 #include "glyphs.h"
-#include "templelib.h"
+#include "app.h"
 #include "window.h"
 #include "window_draw.h"
 #include "window_ctrls.h"

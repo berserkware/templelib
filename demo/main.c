@@ -1,8 +1,5 @@
 #include <stdio.h>
 #include "templelib.h"
-#include "gr.h"
-#include "input.h"
-#include "colors.h"
 
 TempleApp* app;
 

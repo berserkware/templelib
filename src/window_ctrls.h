@@ -2,7 +2,7 @@
 #define WINDOW_CTRLS_H
 
 #include <SDL2/SDL.h>
-#include "templelib.h"
+#include "app.h"
 
 // Adds the window ctrls to the app
 void add_window_ctrls(TempleApp* app);

@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
 #include "window.h"
-#include "templelib.h"
+#include "app.h"
 #include "colors.h"
 #include "glyphs.h"
 #include "gr.h"

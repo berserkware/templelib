@@ -1,6 +1,6 @@
 #include <string.h>
 #include <SDL2/SDL.h>
-#include "templelib.h"
+#include "app.h"
 #include "glyphs.h"
 #include "colors.h"
 

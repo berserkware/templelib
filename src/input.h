@@ -2,7 +2,7 @@
 #define INPUT_H
 
 #include <SDL2/SDL.h>
-#include "templelib.h"
+#include "app.h"
 
 // This contains the data about the mouse
 struct MouseState {
