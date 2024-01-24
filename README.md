@@ -14,7 +14,6 @@ Please note that this is my first library using SDL and C, so the code might be 
  - Implement the full set of Doc functions.
  - Keyboard input.
  - Scroll wheel support.
- - Add Memory address to window border. I don't really know what I will use for this though.
  - Add compiling to a shared library.
  - Change the directory where the glyph sheet is stored.
  - Change the 30fps limit so that it only applies to the `draw_it` callback.
@@ -28,6 +27,7 @@ Please note that this is my first library using SDL and C, so the code might be 
  - Custom window borders with movement and resizing.
  - Change "Button" to "Control". This name makes more sense becuase the buttons are also used for the window resizing and moving.
  - Make single header file that included all the other header files. This is better copy how TempleOS handles includes.
+ - Add Memory address to window border. I don't really know what I will use for this though.
 
 ## Running/Using
 1. Download the source:
@@ -55,4 +55,5 @@ Since the library is in early alpha, any contributions would be much appreciate.
 
 ### Known Bugs
  - If the window is touching the bottom of the screen, it goes super slow. I think this is because of the window position to text snapper. It is trying to move to where the taskbar is, but is blocked.
+ - The window title bar seems to variate in speed.
 
