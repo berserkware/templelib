@@ -1,4 +1,5 @@
 #include <string.h>
+#include <stdio.h>
 #include <SDL2/SDL.h>
 #include "window.h"
 #include "templelib.h"
@@ -145,10 +146,27 @@ void draw_close_ctrl(TempleApp* app) {
   draw_glyph_on_grid(app, 58, gw-4, 0);
 }
 
+void draw_memory_address(TempleApp* app) {
+  char str[8];
+  sprintf(str, "%x", app);
+
+  int gw, gh;
+  get_window_grid_size(app, &gw, &gh);
+
+  set_color(app,BLUE);
+  for(int i = gw-12; i<gw-4; i++) {
+    draw_glyph(app, SOLID_BLOCK, (i*app->real_glyph_size)-2, 0);
+  }
+
+  set_color(app,WHITE);
+  draw_glyph_sentence(app, str, 8, ((gw-12)*app->real_glyph_size), 0);
+}
+
 // draws the window border and decorations
 void draw_window_decorations(TempleApp* app) {
   int flags = SDL_GetWindowFlags(app->window);
   draw_window_border(app, flags & SDL_WINDOW_INPUT_FOCUS);
   draw_close_ctrl(app);
   draw_titlebar(app);
+  draw_memory_address(app);
 }

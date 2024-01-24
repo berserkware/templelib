@@ -15,7 +15,7 @@ TempleApp* tl_create_app(int argc, char *argv[]) {
   TempleApp* app = malloc(sizeof(TempleApp));
 
   // sets default app data
-  app->title = "TempleLib App";
+  app->title = "Unnamed Task";
   app->scale = 2;
   
   if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -39,8 +39,8 @@ static void start(TempleApp* app) {
 				 app->title,
 				 SDL_WINDOWPOS_UNDEFINED,
 				 SDL_WINDOWPOS_UNDEFINED,
-				 550,
-				 300,
+				 750,
+				 400,
 				 window_flags
 				 );
 
