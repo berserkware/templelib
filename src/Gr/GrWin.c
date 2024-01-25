@@ -5,7 +5,6 @@
 #include "../App.h"
 #include "GrColors.h"
 #include "GrGlyphs.h"
-#include "Gr.h"
 #include "GrWin.h"
 
 // draws the border of the window

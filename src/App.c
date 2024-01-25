@@ -4,7 +4,6 @@
 #include "Input.h"
 #include "Gr/GrColors.h"
 #include "Gr/GrWin.h"
-#include "Gr/Gr.h"
 #include "Gr/GrGlyphs.h"
 #include "App.h"
 #include "Window.h"

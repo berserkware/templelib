@@ -3,7 +3,6 @@
 #include "App.h"
 #include "Gr/GrColors.h"
 #include "Gr/GrGlyphs.h"
-#include "Gr/Gr.h"
 
 // Gets the window grid size by dividing the window width by the
 // scaled glyph size

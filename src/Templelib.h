@@ -10,9 +10,6 @@
 #include "WindowCtrls.h"
 #include "Ctrl.h"
 
-#include "Gr/GrWin.h"
-#include "Gr/GrColors.h"
-#include "Gr/Gr.h"
-#include "Gr/GrGlyphs.h"
+#include "Gr.h"
 
 #endif

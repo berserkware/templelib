@@ -2,6 +2,7 @@
 #define GLYPHS_H
 
 #include <SDL2/SDL.h>
+#include "../App.h"
 
 // Defines the index of the border glyphs
 #define BORDER_COLUMN_LEFT 94
@@ -34,5 +35,12 @@ void FreeGlyphs();
 
 // Takes an ascii char and get the corrosponding glyph.
 int CharToGlyphIndex(char c);
+
+// draws a glyph at a grid postion.
+void DrawGlyphOnGrid(TempleApp* app, int gi, int gx, int gy);
+
+void DrawGlyphSentence(TempleApp* app, char* sentence, int length, int x, int y);
+
+void DrawGlyph(TempleApp* app, int gi, int x, int y);
 
 #endif
