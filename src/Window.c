@@ -1,9 +1,9 @@
 #include <SDL2/SDL.h>
 #include "Window.h"
 #include "App.h"
-#include "Colors.h"
-#include "Glyphs.h"
-#include "Gr.h"
+#include "Gr/GrColors.h"
+#include "Gr/GrGlyphs.h"
+#include "Gr/Gr.h"
 
 // Gets the window grid size by dividing the window width by the
 // scaled glyph size

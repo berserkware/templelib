@@ -1,8 +1,8 @@
 #include <string.h>
 #include <SDL2/SDL.h>
-#include "App.h"
-#include "Glyphs.h"
-#include "Colors.h"
+#include "../App.h"
+#include "GrGlyphs.h"
+#include "GrColors.h"
 
 void DrawGlyph(TempleApp* app, int gi, int x, int y) {
   SDL_Rect dstrect = {x,y, app->real_glyph_size, app->real_glyph_size};

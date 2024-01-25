@@ -2,12 +2,12 @@
 #include <SDL2/SDL_image.h>
 #include <unistd.h>
 #include "Input.h"
-#include "Colors.h"
-#include "Gr.h"
-#include "Glyphs.h"
+#include "Gr/GrColors.h"
+#include "Gr/GrWin.h"
+#include "Gr/Gr.h"
+#include "Gr/GrGlyphs.h"
 #include "App.h"
 #include "Window.h"
-#include "WindowDraw.h"
 #include "WindowCtrls.h"
 #include "Ctrl.h"
 

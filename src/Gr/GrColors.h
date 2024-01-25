@@ -1,7 +1,7 @@
 #ifndef COLORS_H
 #define COLORS_H
 
-#include "App.h"
+#include "../App.h"
 
 // Defines the CGA color pallete as a comma seporated list of r,g,b.
 #define        BLACK (Color){ 0, 0, 0 }

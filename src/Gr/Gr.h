@@ -1,7 +1,7 @@
 #ifndef GR_H
 #define GR_H
 
-#include "App.h"
+#include "../App.h"
 
 // draws a glyph at a grid postion.
 void DrawGlyphOnGrid(TempleApp* app, int gi, int gx, int gy);

@@ -1,12 +1,12 @@
 #include <string.h>
 #include <stdio.h>
 #include <SDL2/SDL.h>
-#include "Window.h"
-#include "App.h"
-#include "Colors.h"
-#include "Glyphs.h"
+#include "../Window.h"
+#include "../App.h"
+#include "GrColors.h"
+#include "GrGlyphs.h"
 #include "Gr.h"
-#include "WindowDraw.h"
+#include "GrWin.h"
 
 // draws the border of the window
 void DrawWindowBorder(TempleApp* app, int in_focus) {

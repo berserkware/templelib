@@ -1,8 +1,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <stdio.h>
-#include "App.h"
-#include "Glyphs.h"
+#include "../App.h"
+#include "GrGlyphs.h"
 
 SDL_Texture* glyphs_texture;
 SDL_Rect* glyphs;

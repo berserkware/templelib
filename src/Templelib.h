@@ -5,13 +5,14 @@
 
 #include "App.h"
 #include "Input.h"
-#include "Colors.h"
-#include "Gr.h"
-#include "Glyphs.h"
 #include "App.h"
 #include "Window.h"
-#include "WindowDraw.h"
 #include "WindowCtrls.h"
 #include "Ctrl.h"
+
+#include "Gr/GrWin.h"
+#include "Gr/GrColors.h"
+#include "Gr/Gr.h"
+#include "Gr/GrGlyphs.h"
 
 #endif
