@@ -17,12 +17,12 @@ typedef struct {
 } TempleApp;
 
 // Stops running an app.
-void tl_quit_app(TempleApp* app, int code);
+void TL_QuitApp(TempleApp* app, int code);
 
 // Creates an App.
-TempleApp* tl_create_app();
+TempleApp* TL_CreateApp();
 
 // Runs an App.
-void tl_run_app(TempleApp* app);
+void TL_RunApp(TempleApp* app);
 
 #endif

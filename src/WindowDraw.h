@@ -2,8 +2,8 @@
 #define WINDOW_DRAW_H
 
 #include <SDL2/SDL.h>
-#include "app.h"
+#include "App.h"
 
-void draw_window_decorations(TempleApp* app);
+void DrawWindowDecorations(TempleApp* app);
 
 #endif

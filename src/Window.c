@@ -1,13 +1,13 @@
 #include <SDL2/SDL.h>
-#include "window.h"
-#include "app.h"
-#include "colors.h"
-#include "glyphs.h"
-#include "gr.h"
+#include "Window.h"
+#include "App.h"
+#include "Colors.h"
+#include "Glyphs.h"
+#include "Gr.h"
 
 // Gets the window grid size by dividing the window width by the
 // scaled glyph size
-void get_window_grid_size(TempleApp* app, int* gw, int* gh) {
+void GetWindowGridSize(TempleApp* app, int* gw, int* gh) {
   int w, h;
   SDL_GetWindowSize(app->window, &w, &h);
 
@@ -15,7 +15,7 @@ void get_window_grid_size(TempleApp* app, int* gw, int* gh) {
   *gh = h / app->real_glyph_size;
 }
 
-void get_window_grid_position(TempleApp* app, int* gx, int* gy) {
+void GetWindowGridPosition(TempleApp* app, int* gx, int* gy) {
   int x, y;
   SDL_GetWindowPosition(app->window, &x, &y);
 
@@ -24,7 +24,7 @@ void get_window_grid_position(TempleApp* app, int* gx, int* gy) {
 }
 
 // Aligns the window size to the glyph size
-void align_size_to_glyphs(TempleApp* app) {
+void AlignSizeToGlyphs(TempleApp* app) {
   int w, h;
   SDL_GetWindowSize(app->window, &w, &h);
   
@@ -37,7 +37,7 @@ void align_size_to_glyphs(TempleApp* app) {
 }
 
 // Aligns the window postion to the global glyph grid
-void align_pos_to_grid(TempleApp* app) {
+void AlignPosToGrid(TempleApp* app) {
   int x, y;
   SDL_GetWindowPosition(app->window, &x, &y);
   
@@ -51,7 +51,7 @@ void align_pos_to_grid(TempleApp* app) {
 }
 
 // Updates the window's postion and size.
-void update_window(TempleApp* app) {
-  align_size_to_glyphs(app);
-  align_pos_to_grid(app);
+void UpdateWindow(TempleApp* app) {
+  AlignSizeToGlyphs(app);
+  AlignPosToGrid(app);
 }

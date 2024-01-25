@@ -1,11 +1,11 @@
 #include <SDL2/SDL.h>
-#include "window.h"
-#include "input.h"
-#include "app.h"
-#include "ctrl.h"
+#include "Window.h"
+#include "Input.h"
+#include "App.h"
+#include "Ctrl.h"
 
 // Checks if the mouse is hovering over a ctrl
-int is_mouse_over_ctrl(TempleApp* app, const Control* c) {
+int IsMouseOverCtrl(TempleApp* app, const Control* c) {
   if (c->on_y) {
     if (
 	ms.pos_text.x == c->pos.x &&
@@ -29,7 +29,7 @@ int is_mouse_over_ctrl(TempleApp* app, const Control* c) {
   return 0;
 }
 
-void update_ctrls(TempleApp* app) {
+void UpdateCtrls(TempleApp* app) {
   static struct MouseState last_ms;
   CtrlNode* current = app->ctrl_head;
 
@@ -47,7 +47,7 @@ void update_ctrls(TempleApp* app) {
       }
     }
     if(
-       is_mouse_over_ctrl(app, current->ctrl) &&
+       IsMouseOverCtrl(app, current->ctrl) &&
        ms.lb &&
        !last_ms.lb
        ) {
@@ -75,7 +75,7 @@ void update_ctrls(TempleApp* app) {
   last_ms = ms;
 }
 
-int add_ctrl(TempleApp* app, Control* c){
+int AddCtrl(TempleApp* app, Control* c){
   // stores the id to give to the next CtrlNode
   static int current_id = 1;
   
@@ -100,7 +100,7 @@ int add_ctrl(TempleApp* app, Control* c){
   return node->id;
 }
 
-Control* get_ctrl(TempleApp* app, int id) {
+Control* GetCtrl(TempleApp* app, int id) {
   CtrlNode* current = app->ctrl_head;
   while (current != NULL) {
     if (current->id == id) {
@@ -112,7 +112,7 @@ Control* get_ctrl(TempleApp* app, int id) {
   return NULL;
 }
 
-int delete_ctrl(TempleApp* app, int id) {
+int DeleteCtrl(TempleApp* app, int id) {
   CtrlNode* current = app->ctrl_head;
   CtrlNode* prev = app->ctrl_head;
 

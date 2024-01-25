@@ -1,19 +1,19 @@
 #include <stdio.h>
-#include "templelib.h"
+#include "Templelib.h"
 
 TempleApp* app;
 
 void draw_it() {
-  set_color(app, BLUE);
-  draw_glyph_on_grid(app, 0, ms.pos_text.x, ms.pos_text.y);
+  SetColor(app, BLUE);
+  DrawGlyphOnGrid(app, 0, ms.pos_text.x, ms.pos_text.y);
 }
 
 int main(int argc, char *argv[]) {
-  app = tl_create_app(argc, argv);
+  app = TL_CreateApp(argc, argv);
 
   app->draw_it = &draw_it;
   
-  tl_run_app(app);
+  TL_RunApp(app);
   
   return 0;
 }

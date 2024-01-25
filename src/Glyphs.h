@@ -27,12 +27,12 @@ extern SDL_Texture* glyphs_texture;
 extern SDL_Rect* glyphs;
 
 // Loads the glyph texture, and calculates the rects.
-void load_glyphs();
+void LoadGlyphs();
 
 // Frees the glyph textures and rects.
-void free_glyphs();
+void FreeGlyphs();
 
 // Takes an ascii char and get the corrosponding glyph.
-int char_to_glyph_index(char c);
+int CharToGlyphIndex(char c);
 
 #endif

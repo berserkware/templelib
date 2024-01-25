@@ -1,13 +1,13 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <stdio.h>
-#include "app.h"
-#include "glyphs.h"
+#include "App.h"
+#include "Glyphs.h"
 
 SDL_Texture* glyphs_texture;
 SDL_Rect* glyphs;
 
-void load_glyphs(TempleApp* app) {
+void LoadGlyphs(TempleApp* app) {
   SDL_Surface* glyphs_img = IMG_Load(GLYPHSHEET_PATH);
 
   if (!glyphs_img) {
@@ -48,12 +48,12 @@ void load_glyphs(TempleApp* app) {
   glyphs_texture = SDL_CreateTextureFromSurface(app->renderer, glyphs_img);
 }
 
-void free_glyphs() {
+void FreeGlyphs() {
   free(glyphs_texture);
   free(glyphs);
 }
 
-int char_to_glyph_index(char c) {
+int CharToGlyphIndex(char c) {
   if (c < 33) {
     return -1;
   }

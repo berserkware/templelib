@@ -2,7 +2,7 @@
 #define INPUT_H
 
 #include <SDL2/SDL.h>
-#include "app.h"
+#include "App.h"
 
 // This contains the data about the mouse
 struct MouseState {
@@ -26,6 +26,6 @@ struct MouseState {
 extern struct MouseState ms;
 
 // updates the ms variable
-void update_mouse_state(TempleApp* app);
+void UpdateMouseState(TempleApp* app);
 
 #endif

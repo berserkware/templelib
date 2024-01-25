@@ -26,15 +26,15 @@ typedef struct CtrlNode {
 } CtrlNode;
 
 // Updates the ctrls. Runs and manages the callbacks.
-void update_ctrls(TempleApp* app);
+void UpdateCtrls(TempleApp* app);
 
 // Adds a ctrl to an app, returns the id of the ctrl
-int add_ctrl(TempleApp* app, Control* c);
+int AddCtrl(TempleApp* app, Control* c);
 
 // Gets a ctrl by it's id. Returns a null pointer if not found
-Control* get_ctrl(TempleApp* app, int id);
+Control* GetCtrl(TempleApp* app, int id);
 
 // Deletes a ctrl. Returns 1 if successful, 0 if the ctrl couldn't be found.
-int delete_ctrl(TempleApp* app, int id);
+int DeleteCtrl(TempleApp* app, int id);
 
 #endif

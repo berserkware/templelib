@@ -1,17 +1,17 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <unistd.h>
-#include "input.h"
-#include "colors.h"
-#include "gr.h"
-#include "glyphs.h"
-#include "app.h"
-#include "window.h"
-#include "window_draw.h"
-#include "window_ctrls.h"
-#include "ctrl.h"
+#include "Input.h"
+#include "Colors.h"
+#include "Gr.h"
+#include "Glyphs.h"
+#include "App.h"
+#include "Window.h"
+#include "WindowDraw.h"
+#include "WindowCtrls.h"
+#include "Ctrl.h"
 
-TempleApp* tl_create_app(int argc, char *argv[]) {
+TempleApp* TL_CreateApp(int argc, char *argv[]) {
   TempleApp* app = malloc(sizeof(TempleApp));
 
   // sets default app data
@@ -32,7 +32,7 @@ TempleApp* tl_create_app(int argc, char *argv[]) {
 }
 
 // runs when the app is started
-static void start(TempleApp* app) {
+static void Start(TempleApp* app) {
   int window_flags = SDL_WINDOW_BORDERLESS;
   
   app->window = SDL_CreateWindow(
@@ -58,31 +58,31 @@ static void start(TempleApp* app) {
     printf("Failed to create renderer: %s\n", SDL_GetError());
   }
 
-  load_glyphs(app);
+  LoadGlyphs(app);
 
   app->real_glyph_size = app->scale * GLYPH_SIZE;
 
-  add_window_ctrls(app);
+  AddWindowCtrls(app);
 }
 
 // runs 30 times per second
-static void update(TempleApp* app) {
-  set_color(app, WHITE);
+static void Update(TempleApp* app) {
+  SetColor(app, WHITE);
   SDL_RenderClear(app->renderer);
 
-  update_mouse_state(app);
-  update_window(app);
-  update_ctrls(app);
-  update_window_ctrls(app);
+  UpdateMouseState(app);
+  UpdateWindow(app);
+  UpdateCtrls(app);
+  UpdateWindowCtrls(app);
 
   (app->draw_it)();
-  draw_window_decorations(app);
+  DrawWindowDecorations(app);
 
   SDL_RenderPresent(app->renderer);
 }
 
-void tl_run_app(TempleApp* app) {
-  start(app);
+void TL_RunApp(TempleApp* app) {
+  Start(app);
 
   SDL_Event event;
   
@@ -90,13 +90,13 @@ void tl_run_app(TempleApp* app) {
     while (SDL_PollEvent(&event)) {
       switch (event.type) {
       case SDL_QUIT:
-	tl_quit_app(app, 0);
+	TL_QuitApp(app, 0);
 	break;
 
       case SDL_KEYDOWN:
 	switch (event.key.keysym.sym) {
 	case SDLK_ESCAPE:
-	  tl_quit_app(app, 0);
+	  TL_QuitApp(app, 0);
 	  break;
 	}
 	break;
@@ -106,14 +106,14 @@ void tl_run_app(TempleApp* app) {
       }
     } 
     
-    update(app);
+    Update(app);
     
     sleep(0.033);
   };
 }
 
-void tl_quit_app(TempleApp* app, int code) {
-  free_glyphs();
+void TL_QuitApp(TempleApp* app, int code) {
+  FreeGlyphs();
   SDL_Quit();
   IMG_Quit();
   exit(code);

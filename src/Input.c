@@ -1,13 +1,13 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <unistd.h>
-#include "input.h"
-#include "window.h"
-#include "app.h"
+#include "Input.h"
+#include "Window.h"
+#include "App.h"
 
 struct MouseState ms;
 
-void update_mouse_state(TempleApp* app) {  
+void UpdateMouseState(TempleApp* app) {  
   // Update the pos, and gets the buttons.
   int buttons = SDL_GetMouseState(&ms.pos.x, &ms.pos.y);
 

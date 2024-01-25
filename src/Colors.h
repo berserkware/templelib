@@ -1,7 +1,7 @@
 #ifndef COLORS_H
 #define COLORS_H
 
-#include "app.h"
+#include "App.h"
 
 // Defines the CGA color pallete as a comma seporated list of r,g,b.
 #define        BLACK (Color){ 0, 0, 0 }
@@ -28,6 +28,6 @@ typedef struct {
 } Color;
 
 // Sets the current color of the renderer, and texture.
-void set_color(TempleApp* app, Color color);
+void SetColor(TempleApp* app, Color color);
 
 #endif
