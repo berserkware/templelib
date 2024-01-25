@@ -17,7 +17,6 @@ Please note that this is my first library using SDL and C, so the code might be 
  - Add compiling to a shared library.
  - Change the directory where the glyph sheet is stored.
  - Change the 30fps limit so that it only applies to the `draw_it` callback.
- - Change text case to what TempleOS uses (PascalCase).
  - Moved Doc and Gr function to own directory instead of one file.
  - Move Window Drawing functions to Gr dir.
  - Custom cursor.
@@ -29,6 +28,7 @@ Please note that this is my first library using SDL and C, so the code might be 
  - Change "Button" to "Control". This name makes more sense becuase the buttons are also used for the window resizing and moving.
  - Make single header file that included all the other header files. This is better copy how TempleOS handles includes.
  - Add Memory address to window border. I don't really know what I will use for this though.
+ - Change text case to what TempleOS uses (PascalCase).
 
 ## Running/Using
 1. Download the source:
