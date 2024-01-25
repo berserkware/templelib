@@ -22,6 +22,7 @@ Please note that this is my first library using SDL and C, so the code might be 
  - Move Window Drawing functions to Gr dir.
  - Custom cursor.
  - Fix the glyphsheet installer so it installs in make files, and not in the cmake file.
+ - Add window flags.
  
 ### Done
  - Custom window borders with movement and resizing.
