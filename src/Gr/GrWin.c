@@ -164,8 +164,10 @@ void DrawMemoryAddress(TempleApp* app) {
 // draws the window border and decorations
 void DrawWindowDecorations(TempleApp* app) {
   int flags = SDL_GetWindowFlags(app->window);
-  DrawWindowBorder(app, flags & SDL_WINDOW_INPUT_FOCUS);
-  DrawCloseCtrl(app);
-  DrawTitlebar(app);
-  DrawMemoryAddress(app);
+  if (!(app->window_flags & WINDOWf_NO_BORDER)) {
+    DrawWindowBorder(app, flags & SDL_WINDOW_INPUT_FOCUS);
+    DrawCloseCtrl(app);
+    DrawTitlebar(app);
+    DrawMemoryAddress(app);
+  }
 }

@@ -54,3 +54,12 @@ void UpdateWindow(TempleApp* app) {
   AlignSizeToGlyphs(app);
   AlignPosToGrid(app);
 }
+
+void WinBorder(TempleApp* app) {
+  
+  if (app->window_flags & WINDOWf_NO_BORDER) {
+    app->window_flags &= ~WINDOWf_NO_BORDER;
+  } else {
+    app->window_flags |= WINDOWf_NO_BORDER;
+  }
+}

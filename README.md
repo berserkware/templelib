@@ -19,7 +19,6 @@ Please note that this is my first library using SDL and C, so the code might be 
  - Change the 30fps limit so that it only applies to the `draw_it` callback.
  - Custom cursor.
  - Fix the glyphsheet installer so it installs in make files, and not in the cmake file.
- - Add window flags.
  
 ### Done
  - Custom window borders with movement and resizing.
@@ -29,6 +28,7 @@ Please note that this is my first library using SDL and C, so the code might be 
  - Change text case to what TempleOS uses (PascalCase).
  - Moved Doc and Gr function to own directory instead of one file.
  - Move Window Drawing functions to Gr dir.
+ - Add window flags.
 
 ## Running/Using
 1. Download the source:
@@ -57,4 +57,5 @@ Since the library is in early alpha, any contributions would be much appreciate.
 ### Known Bugs
  - If the window is touching the bottom of the screen, it goes super slow. I think this is because of the window position to text snapper. It is trying to move to where the taskbar is, but is blocked.
  - The window title bar seems to variate in speed.
+ - Even with the window no border flag set, the controls still work.
 

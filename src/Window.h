@@ -10,4 +10,6 @@ void GetWindowGridPosition(TempleApp* app, int* gx, int* gy);
 
 void UpdateWindow(TempleApp* app);
 
+void WinBorder(TempleApp* app);
+
 #endif

@@ -60,6 +60,7 @@ static void Start(TempleApp* app) {
   LoadGlyphs(app);
 
   app->real_glyph_size = app->scale * GLYPH_SIZE;
+  app->window_flags = 0;
 
   AddWindowCtrls(app);
 }
