@@ -1,7 +1,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <SDL2/SDL.h>
-#include "../Window.h"
+#include "../Win.h"
 #include "../App.h"
 #include "GrColors.h"
 #include "GrGlyphs.h"

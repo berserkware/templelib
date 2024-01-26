@@ -19,7 +19,8 @@ Please note that this is my first library using SDL and C, so the code might be 
  - Change the 30fps limit so that it only applies to the `draw_it` callback.
  - Custom cursor.
  - Fix the glyphsheet installer so it installs in make files, and not in the cmake file.
- 
+ - Add minimium window size.
+
 ### Done
  - Custom window borders with movement and resizing.
  - Change "Button" to "Control". This name makes more sense becuase the buttons are also used for the window resizing and moving.

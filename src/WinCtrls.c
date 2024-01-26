@@ -1,8 +1,8 @@
 #include <SDL2/SDL.h>
 #include "App.h"
 #include "Ctrl.h"
-#include "Window.h"
-#include "WindowCtrls.h"
+#include "Win.h"
+#include "WinCtrls.h"
 #include "Input.h"
 
 int close_ctrl_id;

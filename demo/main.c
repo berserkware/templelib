@@ -4,9 +4,6 @@
 TempleApp* app;
 
 void draw_it() {
-  if (!(app->window_flags & WINDOWf_NO_BORDER))
-    WinBorder(app);
-  
   SetColor(app, BLUE);
   DrawGlyphOnGrid(app, 0, ms.pos_text.x, ms.pos_text.y);
 }

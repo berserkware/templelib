@@ -6,8 +6,9 @@
 #include "Gr/GrWin.h"
 #include "Gr/GrGlyphs.h"
 #include "App.h"
-#include "Window.h"
-#include "WindowCtrls.h"
+#include "WinMgr.h"
+#include "Win.h"
+#include "WinCtrls.h"
 #include "Ctrl.h"
 
 TempleApp* TL_CreateApp(int argc, char *argv[]) {
