@@ -20,6 +20,7 @@ Please note that this is my first library using SDL and C, so the code might be 
  - Custom cursor.
  - Fix the glyphsheet installer so it installs in make files, and not in the cmake file.
  - Add minimium window size.
+ - Update Control class to better reflect the way TempleOS handles controls.
 
 ### Done
  - Custom window borders with movement and resizing.
