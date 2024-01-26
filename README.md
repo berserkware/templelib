@@ -59,4 +59,4 @@ Since the library is in early alpha, any contributions would be much appreciate.
  - If the window is touching the bottom of the screen, it goes super slow. I think this is because of the window position to text snapper. It is trying to move to where the taskbar is, but is blocked.
  - The window title bar seems to variate in speed.
  - Even with the window no border flag set, the controls still work.
-
+ - Window can't go pass edge of screen.

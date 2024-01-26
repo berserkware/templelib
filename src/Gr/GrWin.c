@@ -154,7 +154,7 @@ void DrawMemoryAddress(TempleApp* app) {
 
   SetColor(app,BLUE);
   for(int i = gw-12; i<gw-4; i++) {
-    DrawGlyph(app, SOLID_BLOCK, (i*app->real_glyph_size)-2, 0);
+    DrawGlyph(app, SOLID_BLOCK, (i*app->real_glyph_size)-app->scale, 0);
   }
 
   SetColor(app,WHITE);
