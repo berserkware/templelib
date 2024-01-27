@@ -5,7 +5,7 @@
 #include "Ctrl.h"
 
 // Checks if the mouse is hovering over a ctrl
-int IsMouseOverCtrl(TempleApp* app, const Control* c) {
+int IsMouseOverCtrl(TempleApp* app, const Ctrl* c) {
   if (c->on_y) {
     if (
 	ms.pos_text.x == c->pos.x &&
@@ -37,7 +37,7 @@ void UpdateCtrls(TempleApp* app) {
     return;
   }
 
-  Control* ctrl_clicked = NULL;
+  Ctrl* ctrl_clicked = NULL;
   
   while(current != NULL) {
     if(current->ctrl->currently_running) {
@@ -75,7 +75,7 @@ void UpdateCtrls(TempleApp* app) {
   last_ms = ms;
 }
 
-int AddCtrl(TempleApp* app, Control* c){
+int AddCtrl(TempleApp* app, Ctrl* c){
   // stores the id to give to the next CtrlNode
   static int current_id = 1;
   
@@ -100,7 +100,7 @@ int AddCtrl(TempleApp* app, Control* c){
   return node->id;
 }
 
-Control* GetCtrl(TempleApp* app, int id) {
+Ctrl* GetCtrl(TempleApp* app, int id) {
   CtrlNode* current = app->ctrl_head;
   while (current != NULL) {
     if (current->id == id) {

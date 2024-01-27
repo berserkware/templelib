@@ -23,7 +23,7 @@ void AddWindowCtrls(TempleApp* app) {
   GetWindowGridSize(app, &gw, &gh);
 
   // Adds the close window ctrl.
-  Control* close_window_ctrl = malloc(sizeof(Control));
+  Ctrl* close_window_ctrl = malloc(sizeof(Ctrl));
   close_window_ctrl->length = 3;
   close_window_ctrl->on_y = 0;
   close_window_ctrl->priority = 2;
@@ -34,7 +34,7 @@ void AddWindowCtrls(TempleApp* app) {
   close_ctrl_id = AddCtrl(app, close_window_ctrl);
 
   // Adds the titlebar move ctrl.
-  Control* top_move_window_ctrl = malloc(sizeof(Control));
+  Ctrl* top_move_window_ctrl = malloc(sizeof(Ctrl));
   top_move_window_ctrl->length = gw-2;
   top_move_window_ctrl->on_y = 0;
   top_move_window_ctrl->priority = 1;
@@ -45,7 +45,7 @@ void AddWindowCtrls(TempleApp* app) {
   top_move_window_ctrl_id = AddCtrl(app, top_move_window_ctrl);
 
   // Adds the sidebar move ctrl.
-  Control* left_move_window_ctrl = malloc(sizeof(Control));
+  Ctrl* left_move_window_ctrl = malloc(sizeof(Ctrl));
   left_move_window_ctrl->length = gh-1;
   left_move_window_ctrl->on_y = 1;
   left_move_window_ctrl->priority = 1;
@@ -56,7 +56,7 @@ void AddWindowCtrls(TempleApp* app) {
   left_move_window_ctrl_id = AddCtrl(app, left_move_window_ctrl);
 
   // Adds the bottom resize ctrl.
-  Control* bottom_resize_window_ctrl = malloc(sizeof(Control));
+  Ctrl* bottom_resize_window_ctrl = malloc(sizeof(Ctrl));
   bottom_resize_window_ctrl->length = gw-2;
   bottom_resize_window_ctrl->on_y = 0;
   bottom_resize_window_ctrl->priority = 0;
@@ -67,7 +67,7 @@ void AddWindowCtrls(TempleApp* app) {
   bottom_resize_window_ctrl_id = AddCtrl(app, bottom_resize_window_ctrl);
 
   // Adds the right resize ctrl.
-  Control* right_resize_window_ctrl = malloc(sizeof(Control));
+  Ctrl* right_resize_window_ctrl = malloc(sizeof(Ctrl));
   right_resize_window_ctrl->length = gh-1;
   right_resize_window_ctrl->on_y = 1;
   right_resize_window_ctrl->priority = 1;
@@ -78,7 +78,7 @@ void AddWindowCtrls(TempleApp* app) {
   right_resize_window_ctrl_id = AddCtrl(app, right_resize_window_ctrl);
 
    // Adds the right resize ctrl.
-  Control* bottom_right_resize_window_ctrl = malloc(sizeof(Control));
+  Ctrl* bottom_right_resize_window_ctrl = malloc(sizeof(Ctrl));
   bottom_right_resize_window_ctrl->length = 1;
   bottom_right_resize_window_ctrl->on_y = 1;
   bottom_right_resize_window_ctrl->priority = 1;
@@ -93,24 +93,24 @@ void UpdateWindowCtrls(TempleApp* app) {
   int gw, gh;
   GetWindowGridSize(app, &gw, &gh);
   
-  Control* close_ctrl = GetCtrl(app, close_ctrl_id);
+  Ctrl* close_ctrl = GetCtrl(app, close_ctrl_id);
   close_ctrl->pos.x = gw-4;
 
-  Control* top_move_window_ctrl = GetCtrl(app, top_move_window_ctrl_id);
+  Ctrl* top_move_window_ctrl = GetCtrl(app, top_move_window_ctrl_id);
   top_move_window_ctrl->length = gw-2;
 
-  Control* left_move_window_ctrl = GetCtrl(app, left_move_window_ctrl_id);
+  Ctrl* left_move_window_ctrl = GetCtrl(app, left_move_window_ctrl_id);
   left_move_window_ctrl->length = gh-1;
   
-  Control* bottom_resize_window_ctrl = GetCtrl(app, bottom_resize_window_ctrl_id);
+  Ctrl* bottom_resize_window_ctrl = GetCtrl(app, bottom_resize_window_ctrl_id);
   bottom_resize_window_ctrl->length = gw-2;
   bottom_resize_window_ctrl->pos.y = gh-1;
 
-  Control* right_resize_window_ctrl = GetCtrl(app, right_resize_window_ctrl_id);
+  Ctrl* right_resize_window_ctrl = GetCtrl(app, right_resize_window_ctrl_id);
   right_resize_window_ctrl->length = gh-1;
   right_resize_window_ctrl->pos.x = gw-1;
 
-  Control* bottom_right_resize_window_ctrl = GetCtrl(app, bottom_right_resize_window_ctrl_id);
+  Ctrl* bottom_right_resize_window_ctrl = GetCtrl(app, bottom_right_resize_window_ctrl_id);
   bottom_right_resize_window_ctrl->length = gh-1;
   bottom_right_resize_window_ctrl->pos.x = gw-1;
 }
