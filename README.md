@@ -17,7 +17,6 @@ Please note that this is my first library using SDL and C, so the code might be 
  - Scroll wheel support.
  - Add compiling to a shared library.
  - Change the directory where the glyph sheet is stored.
- - Change the 30fps limit so that it only applies to the `draw_it` callback.
  - Custom cursor.
  - Fix the glyphsheet installer so it installs in make files, and not in the cmake file.
  - Add minimium window size.
