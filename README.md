@@ -10,6 +10,7 @@ Please note that this is my first library using SDL and C, so the code might be 
 ![A window demoing TempleLib](images/window.png "Demo Window")
 
 ## TODO
+ - Move to using a DC-type data structure for storing graphics.
  - Implement the full set of Graphics functions.
  - Implement the full set of Doc functions.
  - Keyboard input.
