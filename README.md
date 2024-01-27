@@ -16,6 +16,7 @@ Please note that this is my first library using SDL and C, so the code might be 
  - Keyboard input.
  - Scroll wheel support.
  - Add compiling to a shared library.
+ - Move to using CP437 for the glyphs.
  - Change the directory where the glyph sheet is stored.
  - Custom cursor.
  - Fix the glyphsheet installer so it installs in make files, and not in the cmake file.
