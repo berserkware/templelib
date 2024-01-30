@@ -146,19 +146,38 @@ void DrawCloseCtrl(TempleApp* app) {
 }
 
 void DrawMemoryAddress(TempleApp* app) {
-  char str[8];
-  sprintf(str, "%x", app);
-
+   char *title_to_render = malloc(strlen(app->title) + 3 + 1); 
+  strcpy(title_to_render, app->title);
+  strcat(title_to_render, "...");
+  
   int gw, gh;
   GetWindowGridSize(app, &gw, &gh);
 
+  int titlebar_length = gw / 3;
+
+  if (titlebar_length < 3) {
+    return;
+  }
+
+  if (titlebar_length > strlen(title_to_render)) {
+    titlebar_length = strlen(title_to_render);
+  }
+
+  int titlebar_start = (gw/2)-(titlebar_length/2);
+  
+  
+  char str[8];
+  sprintf(str, "%x", app);
+
+  int addr_start = (titlebar_start + titlebar_length + 1);
+  
   SetColor(app,BLUE);
-  for(int i = gw-12; i<gw-4; i++) {
+  for(int i = addr_start; i<addr_start+8; i++) {
     DrawGlyph(app, SOLID_BLOCK, (i*app->real_glyph_size), 0);
   }
 
   SetColor(app,WHITE);
-  DrawGlyphSentence(app, str, 8, ((gw-12)*app->real_glyph_size), 0);
+  DrawGlyphSentence(app, str, 8, ((addr_start)*app->real_glyph_size), 0);
 }
 
 // draws the window border and decorations
