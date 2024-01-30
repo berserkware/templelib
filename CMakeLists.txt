@@ -9,7 +9,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/templelib)
 
 # Defines the stuff for the glyphsheet. To compile for platforms other than linux, you
 # will have to change this stuff.
-set(DATA_DIR ~/.templelib)
+file(REAL_PATH ~/.templelib DATA_DIR)
 set(GLYPHSHEET_FILE glyphsheet.png)
 set(GLYPHSHEET_SOURCE data/glyphsheet.png)
 file(REAL_PATH ${DATA_DIR}/${GLYPHSHEET_FILE} GLYPHSHEET_PATH)

@@ -55,15 +55,15 @@ void FreeGlyphs() {
 }
 
 int CharToGlyphIndex(char c) {
-  if (c < 33) {
+  if (c < 32) {
     return -1;
   }
 
-  if (c > 126) {
+  if (c > 167) {
     return -1;
   }
-
-  return c - 33;
+  
+  return c-32;
 }
 
 void DrawGlyph(TempleApp* app, int gi, int x, int y) {

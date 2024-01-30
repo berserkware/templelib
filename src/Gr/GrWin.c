@@ -21,15 +21,15 @@ void DrawWindowBorder(TempleApp* app, int in_focus) {
   SetColor(app, BLUE);
   // draws the corners
   if (in_focus) {
-    DrawGlyphOnGrid(app, BORDER_TOP_LEFT_CORNER, 0, 0);
-    DrawGlyphOnGrid(app, BORDER_TOP_RIGHT_CORNER, gw-1, 0);
-    DrawGlyphOnGrid(app, BORDER_BOTTOM_LEFT_CORNER, 0, gh-1);
-    DrawGlyphOnGrid(app, BORDER_BOTTOM_RIGHT_CORNER, gw-1, gh-1);
+    DrawGlyphOnGrid(app, BOX_DOUBLE_TOP_LEFT, 0, 0);
+    DrawGlyphOnGrid(app, BOX_DOUBLE_TOP_RIGHT, gw-1, 0);
+    DrawGlyphOnGrid(app, BOX_DOUBLE_BOTTOM_LEFT, 0, gh-1);
+    DrawGlyphOnGrid(app, BOX_DOUBLE_BOTTOM_RIGHT, gw-1, gh-1);
   } else {
-    DrawGlyphOnGrid(app, SMALL_BORDER_TOP_LEFT_CORNER, 0, 0);
-    DrawGlyphOnGrid(app, SMALL_BORDER_TOP_RIGHT_CORNER, gw-1, 0);
-    DrawGlyphOnGrid(app, SMALL_BORDER_BOTTOM_LEFT_CORNER, 0, gh-1);
-    DrawGlyphOnGrid(app, SMALL_BORDER_BOTTOM_RIGHT_CORNER, gw-1, gh-1);
+    DrawGlyphOnGrid(app, BOX_SINGLE_TOP_LEFT, 0, 0);
+    DrawGlyphOnGrid(app, BOX_SINGLE_TOP_RIGHT, gw-1, 0);
+    DrawGlyphOnGrid(app, BOX_SINGLE_BOTTOM_LEFT, 0, gh-1);
+    DrawGlyphOnGrid(app, BOX_SINGLE_BOTTOM_RIGHT, gw-1, gh-1);
   }
   
   // draws the columns
@@ -41,12 +41,12 @@ void DrawWindowBorder(TempleApp* app, int in_focus) {
 
     SetColor(app, BLUE);
     if (in_focus) {
-       DrawGlyphOnGrid(app, BORDER_COLUMN_LEFT, 0, r);
-       DrawGlyphOnGrid(app, BORDER_COLUMN_RIGHT, gw-1, r);
+      DrawGlyphOnGrid(app, BOX_DOUBLE_HORIZONTAL, 0, r);
+      DrawGlyphOnGrid(app, BOX_DOUBLE_HORIZONTAL, gw-1, r);
     }
     else {
-      DrawGlyphOnGrid(app, SMALL_BORDER_COLUMN_LEFT, 0, r);
-      DrawGlyphOnGrid(app, SMALL_BORDER_COLUMN_RIGHT, gw-1, r);
+      DrawGlyphOnGrid(app, BOX_SINGLE_HORIZONTAL, 0, r);
+      DrawGlyphOnGrid(app, BOX_SINGLE_HORIZONTAL, gw-1, r);
     }
   }
 
@@ -59,12 +59,12 @@ void DrawWindowBorder(TempleApp* app, int in_focus) {
 
     SetColor(app, BLUE);
     if (in_focus) {
-      DrawGlyphOnGrid(app, BORDER_ROW_TOP, c, 0);
-      DrawGlyphOnGrid(app, BORDER_ROW_BOTTOM, c, gh-1);
+      DrawGlyphOnGrid(app, BOX_DOUBLE_VERTICAL, c, 0);
+      DrawGlyphOnGrid(app, BOX_DOUBLE_VERTICAL, c, gh-1);
     }
     else {
-      DrawGlyphOnGrid(app, SMALL_BORDER_ROW_TOP, c, 0);
-      DrawGlyphOnGrid(app, SMALL_BORDER_ROW_BOTTOM, c, gh-1);
+      DrawGlyphOnGrid(app, BOX_SINGLE_VERTICAL, c, 0);
+      DrawGlyphOnGrid(app, BOX_SINGLE_VERTICAL, c, gh-1);
     }
   }
 }
@@ -140,9 +140,9 @@ void DrawCloseCtrl(TempleApp* app) {
   DrawGlyphOnGrid(app, SOLID_BLOCK, gw-4, 0);
 
   SetColor(app,BLUE);
-  DrawGlyphOnGrid(app, 60, gw-2, 0);
-  DrawGlyphOnGrid(app, 55, gw-3, 0);
-  DrawGlyphOnGrid(app, 58, gw-4, 0);
+  DrawGlyphOnGrid(app, CharToGlyphIndex(']'), gw-2, 0);
+  DrawGlyphOnGrid(app, CharToGlyphIndex('X'), gw-3, 0);
+  DrawGlyphOnGrid(app, CharToGlyphIndex('['), gw-4, 0);
 }
 
 void DrawMemoryAddress(TempleApp* app) {
@@ -154,7 +154,7 @@ void DrawMemoryAddress(TempleApp* app) {
 
   SetColor(app,BLUE);
   for(int i = gw-12; i<gw-4; i++) {
-    DrawGlyph(app, SOLID_BLOCK, (i*app->real_glyph_size)-app->scale, 0);
+    DrawGlyph(app, SOLID_BLOCK, (i*app->real_glyph_size), 0);
   }
 
   SetColor(app,WHITE);
